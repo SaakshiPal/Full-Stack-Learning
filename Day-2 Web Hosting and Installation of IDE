@@ -1,0 +1,192 @@
+📘 DAY 2 – CMS, Web Hosting, DNS & VS Code
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 What is a CMS (Content Management System)?
+
+A **CMS** allows users to **create, edit, manage, and publish website content** without writing code every time.
+
+🔹 Why CMS is Important
+
+* Easy content updates
+* Non-technical users can manage websites
+* Faster development and maintenance
+
+
+🆚 CMS Comparison: WordPress vs Payload CMS
+
+🌍 WordPress (Traditional CMS)
+
+* Most popular CMS in the world
+* Powers **43%+ websites**
+* Started in 2003 as a blogging platform
+* Built using **PHP**
+
+❌ Limitations of WordPress
+
+* Slower for modern applications
+* Harder to scale
+* Less flexible with modern frontend frameworks
+* Limited control for developers
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ Payload CMS (Modern CMS)
+
+* Built with **JavaScript / TypeScript**
+* Runs on **Node.js**
+* Designed for modern web apps
+
+✅ Advantages of **Payload CMS**
+
+* Full frontend control
+* Works smoothly with **Next.js**
+* Faster performance
+* Scalable for large applications
+* Better **data ownership & privacy**
+* Tracks content changes (`createdBy`, `updatedBy`)
+
+📌 **Why companies are shifting:**
+Modern CMS = speed + flexibility + control
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌐 What is Web Hosting?
+
+Web hosting is the process of **storing website files on servers** and making them accessible on the internet using a **domain name**.
+
+
+🖥️ Web Servers
+
+* Servers are powerful computers
+* Designed for **24/7 uptime**
+* Mostly run on **Linux** (stable & secure)
+
+📌 Example:
+**Google** runs thousands of Linux servers globally
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🪜 Steps to Make a Website Live
+
+1. Buy a **domain name**
+2. Choose a **hosting provider**
+3. Select hosting type:
+
+   * Shared
+   * VPS
+   * Dedicated
+   * Cloud
+4. Upload website files (HTML, CSS, images)
+5. Setup database (MySQL / PostgreSQL) if needed
+6. Configure DNS
+7. Website goes live 🌍
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🗂️ Database in Hosting
+
+Used for **dynamic websites** like WordPress
+
+* Stores:
+
+  * User data
+  * Posts
+  * Orders
+* Common databases:
+
+  * MySQL
+  * PostgreSQL
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 What is DNS (Domain Name System)?
+
+DNS converts **human-friendly domain names** into **IP addresses** so browsers can locate servers.
+
+📌 Example:
+`google.com` → `142.250.xxx.xxx`
+
+
+🔍 DNS Resolution Process
+
+1. Browser sends request
+2. DNS Resolver checks cache
+3. Queries:
+
+   * Root server
+   * TLD server (.com, .in)
+   * Authoritative server
+4. IP address returned
+5. Website loads
+
+⏱️ Happens in milliseconds
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 DNS Caching & TTL
+
+* **DNS Cache** stores previous lookups
+* **TTL (Time To Live)** defines cache duration
+* Lower TTL = faster updates but more queries
+
+
+🧾 Common DNS Record Types
+
+| Record | Purpose                       |
+| ------ | ----------------------------- |
+| A      | Maps domain → IPv4            |
+| AAAA   | Maps domain → IPv6            |
+| MX     | Email routing                 |
+| CNAME  | Domain alias                  |
+| TXT    | Verification & email security |
+| NS     | Name servers                  |
+| SRV    | Service location              |
+| PTR    | Reverse DNS lookup            |
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🛠️ Useful Website Tools
+
+* Domain check – GoDaddy
+* DNS check – WhatsMyDNS
+* Uptime monitoring – UptimeRobot
+* Performance – GTmetrix, Pingdom
+* DNS lookup – MXToolbox
+* WHOIS – ICANN
+
+---
+
+💻 Installing Visual Studio Code (Windows)
+
+What is VS Code?
+
+**Visual Studio Code** is a free, lightweight code editor by **Microsoft**.
+
+---
+
+🪜 Installation Steps
+
+1. Open browser
+2. Visit official VS Code website
+3. Click **Download for Windows**
+4. Run installer
+5. Accept agreement
+6. Choose location
+7. Click **Install**
+8. Launch VS Code
+
+⏱️ Takes ~1 minute
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔌 VS Code Extensions
+
+* Add features like:
+
+  * Code formatting
+  * Debugging
+  * Git integration
+* Customizable for any tech stack
+
+
