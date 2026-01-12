@@ -1,0 +1,153 @@
+📘 DAY 3 – What Is a Git Repository?
+
+🔧 What is Git?
+
+**Git** is a **version control system** used to track changes in code files.
+
+Why Git is Important
+
+* Keeps history of code changes
+* Helps work in teams
+* Prevents code loss
+* Easy rollback to older versions
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 What is a Git Repository?
+
+A **Git Repository (Repo)** is a **storage space** where:
+
+* Project files are saved
+* Code changes are tracked
+* Complete history of the project exists
+
+📌 Think of it as a **smart folder** that remembers *who changed what and when*.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🗂️ Types of Git Repositories
+
+1️⃣ Local Repository
+
+* Stored on **your computer**
+* Created using `git init`
+* Used for writing and testing code
+
+2️⃣ Remote Repository
+
+* Stored on the internet
+* Shared with others
+* Example: **GitHub**
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Local Repo vs Remote Repo
+
+| Feature  | Local Repo  | Remote Repo   |
+| -------- | ----------- | ------------- |
+| Location | Your system | Online server |
+| Usage    | Development | Collaboration |
+| Commands | commit      | push / pull   |
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What Does a Git Repository Contain?
+
+* Project files (code, assets)
+* `.git` folder (hidden)
+* Commit history
+* Branch information
+
+📌 `.git` folder is the **brain of Git**
+
+
+⚙️ Basic Git Repository Workflow
+
+1. Create or clone repository
+2. Make code changes
+3. Add changes to staging
+4. Commit changes
+5. Push to remote repo
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧪 Important Git Commands
+
+🔹 Initialize Repository
+
+```bash
+git init
+```
+
+🔹 Check Status
+
+```bash
+git status
+```
+
+🔹 Add Files
+
+```bash
+git add .
+```
+
+🔹 Commit Changes
+
+```bash
+git commit -m "message"
+```
+
+🔹 Connect Remote Repo
+
+```bash
+git remote add origin <repo-url>
+```
+
+🔹 Push Code
+
+```bash
+git push origin main
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌿 What is a Branch?
+
+A **branch** is a **separate version of code**.
+
+Why Branches?
+
+* Work on features safely
+* No effect on main code
+* Easy merging later
+
+📌 Default branch → `main`
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔀 What is Commit?
+
+A **commit** is a **snapshot** of your project at a point in time.
+
+* Has unique ID
+* Includes message
+* Helps track progress
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔐 Why Git Repository Matters
+
+* Enables teamwork
+* Tracks every change
+* Used in all companies
+* Mandatory skill for developers
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-3 Recap
+
+* Understood Git
+* Learned what a Git Repository is
+* Local vs Remote repo
+* Basic Git workflow
+* Essential Git commands
