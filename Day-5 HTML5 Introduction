@@ -1,0 +1,145 @@
+📘 HTML5 | Introduction
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+🌐 What is HTML?
+
+**HTML (HyperText Markup Language)** is the **standard language used to create web pages**.
+
+* Defines the **structure** of a webpage
+* Tells the browser **what content to show**
+* Used to create headings, paragraphs, images, links, forms, etc.
+
+📌 HTML is the **foundation of web development**
+
+---
+
+🆕 What is HTML5?
+
+**HTML5** is the **latest and modern version of HTML** designed to support:
+
+* Modern web applications
+* Multimedia content
+* Mobile-friendly websites
+* Better performance and accessibility
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Why HTML5 is Important
+
+* Supported by all modern browsers
+* No need for external plugins (Flash, etc.)
+* Built-in audio and video support
+* Better SEO and accessibility
+* Works well with CSS3 and JavaScript
+
+---
+
+🆚 HTML vs HTML5
+
+| HTML                 | HTML5                  |
+| -------------------- | ---------------------- |
+| Older version        | Latest version         |
+| Limited multimedia   | Built-in audio & video |
+| Heavy use of `<div>` | Semantic tags          |
+| Less mobile support  | Mobile-friendly        |
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧱 Basic Structure of an HTML5 Document
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Introduction</title>
+</head>
+<body>
+  <h1>Welcome to HTML5</h1>
+  <p>This is my first HTML5 page.</p>
+</body>
+</html>
+```
+
+🔍 Explanation
+
+* `<!DOCTYPE html>` → Declares HTML5
+* `<html>` → Root element
+* `<head>` → Metadata (title, charset)
+* `<body>` → Visible webpage content
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🏷️ Semantic Elements in HTML5
+
+Semantic tags clearly describe **their meaning**.
+
+| Tag         | Purpose             |
+| ----------- | ------------------- |
+| `<header>`  | Page header         |
+| `<nav>`     | Navigation links    |
+| `<section>` | Section of content  |
+| `<article>` | Independent content |
+| `<aside>`   | Sidebar content     |
+| `<footer>`  | Footer section      |
+
+📌 Improves readability, SEO, and accessibility
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎥 Multimedia Support in HTML5
+
+🎧 Audio Example
+
+```html
+<audio controls>
+  <source src="audio.mp3" type="audio/mpeg">
+</audio>
+```
+
+🎬 Video Example
+
+```html
+<video controls width="400">
+  <source src="video.mp4" type="video/mp4">
+</video>
+```
+
+✔ No plugins required
+✔ Works across devices
+
+---
+
+📱 HTML5 & Mobile Support
+
+* Designed for responsive websites
+* Works with mobile-first design
+* Used in modern frontend frameworks
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔐 New Features in HTML5
+
+* Local Storage
+* Offline support
+* Drag and Drop
+* Geolocation
+* Improved form controls
+
+---
+
+💼 Why HTML5 is Important for Developers
+
+* Easy to learn
+* Industry standard
+* Required for frontend & full stack roles
+* Used in all modern web projects
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ HTML5 – Summary
+
+* HTML defines structure
+* HTML5 is the modern standard
+* Supports multimedia
+* Uses semantic tags
+* Mobile & SEO friendly
