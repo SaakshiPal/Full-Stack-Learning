@@ -1,0 +1,235 @@
+📘 DAY 4 – GitHub, GitHub Repository, Branching & Merging
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🐙 What is GitHub?
+
+**GitHub** is a cloud-based platform used to **store, manage, and collaborate on code**.
+It works on top of **Git**, which tracks changes in your project.
+
+📌 GitHub = online platform
+📌 Git = version control tool
+
+---
+
+🆚 Git vs GitHub
+
+| Git                 | GitHub             |
+| ------------------- | ------------------ |
+| Tool                | Platform           |
+| Works locally       | Works online       |
+| Tracks code changes | Hosts repositories |
+| CLI-based           | Web + Git          |
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 What is a GitHub Repository?
+
+A **GitHub Repository (Repo)** is an **online project folder** that contains:
+
+* Source code
+* Commit history
+* Branches
+* Documentation (`README.md`)
+* Issues & Pull Requests
+
+📌 Think of it as your **project’s online home**
+
+---
+
+🗂️ Contents of a GitHub Repository
+
+* Code files
+* `README.md`
+* `.gitignore`
+* Commits
+* Branches
+* Issues
+* Pull Requests (PRs)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌍 Public vs Private Repositories
+
+| Public Repo         | Private Repo     |
+| ------------------- | ---------------- |
+| Visible to everyone | Limited access   |
+| Good for portfolio  | Company projects |
+| Free hosting        | Secure           |
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Basic GitHub Workflow
+
+1. Create repository on GitHub
+2. Clone repo to local system
+3. Create a branch
+4. Make changes
+5. Commit changes
+6. Push changes
+7. Create Pull Request
+8. Merge into main
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧪 Important GitHub Commands
+
+Clone Repository
+
+```bash
+git clone <repo-url>
+```
+
+Check Branches
+
+```bash
+git branch
+```
+
+Push Code
+
+```bash
+git push origin main
+```
+
+Pull Latest Changes
+
+```bash
+git pull origin main
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌿 Git Branching
+
+What is a Branch?
+
+A **branch** is a **separate version of your code** that allows you to work independently without affecting the main code.
+
+📌 Default branch → `main`
+
+---
+
+Why Branching is Important
+
+* Work on new features safely
+* Fix bugs without breaking main code
+* Multiple developers can work together
+* Cleaner and safer development
+
+
+Creating & Switching Branches
+
+Create a New Branch
+
+```bash
+git branch feature-login
+```
+
+Switch to Branch
+
+```bash
+git checkout feature-login
+```
+
+Create & Switch (Shortcut)
+
+```bash
+git checkout -b feature-login
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌿 Types of Branches
+
+* `main` → production-ready code
+* `feature` → new features
+* `bugfix` → fixing bugs
+* `hotfix` → urgent fixes
+
+
+🔀 Git Merging
+
+What is Merging?
+
+**Merging** means combining changes from one branch into another (usually into `main`).
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Merge Workflow
+
+1. Switch to main branch
+
+```bash
+git checkout main
+```
+
+2. Merge feature branch
+
+```bash
+git merge feature-login
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔀 Pull Requests (PR)
+
+A **Pull Request** is a request to **merge one branch into another** using GitHub.
+
+Why PRs are Important
+
+* Code review
+* Team discussion
+* Quality control
+* Safe merging
+
+📌 Used in **all companies**
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🐞 Issues in GitHub
+
+Issues are used to track:
+
+* Bugs 🐛
+* Features ✨
+* Tasks 📌
+
+📌 Helps teams stay organized
+
+⭐ Stars, Forks & Watch
+
+* ⭐ **Star** → Like / bookmark project
+* 🍴 **Fork** → Copy repo to your account
+* 👀 **Watch** → Get updates
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 README.md (Very Important)
+
+README explains:
+
+* Project purpose
+* Technologies used
+* How to run project
+* Folder structure
+
+📌 First thing recruiters check
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💼 GitHub as a Portfolio
+
+* Shows consistency
+* Shows learning journey
+* Shows teamwork skills
+* Highly valued by recruiters
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+✅ DAY 4 – Final Summary
+
+* GitHub basics
+* Git vs GitHub
+* GitHub repositories
+* Branching concepts
+* Merging & Pull Requests
+* Real-world workflow
