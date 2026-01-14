@@ -1,0 +1,129 @@
+📘 DAY 6 – First Web Page | Printing “Hello World”
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+🌐 What is a Web Page?
+
+A **web page** is a document written in **HTML** that is displayed in a **web browser**.
+
+* Contains text, images, links, etc.
+* Stored as a `.html` file
+* Opened using any browser (Chrome, Edge, Firefox)
+
+---
+
+🎯 Goal of Day 6
+
+✔ Create your **first web page**
+✔ Print **Hello World** on the browser
+✔ Understand basic HTML structure
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧾 What is “Hello World”?
+
+* The **first program** written by beginners
+* Used to test:
+
+  * File setup
+  * Browser output
+  * Basic syntax
+
+📌 It confirms your environment is working correctly
+
+---
+
+🛠️ Requirements
+
+* Code Editor (VS Code / Notepad)
+* Web Browser (Chrome, Edge, etc.)
+* Basic knowledge of HTML tags
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🪜 Steps to Create First Web Page
+
+Step 1: Create a File
+
+* File name: `index.html`
+* Extension must be `.html`
+
+---
+
+Step 2: Write HTML Code
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My First Web Page</title>
+</head>
+<body>
+  <h1>Hello World</h1>
+</body>
+</html>
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔍 Code Explanation
+
+* `<!DOCTYPE html>` → Declares HTML5
+* `<html>` → Root element
+* `<head>` → Page information (title)
+* `<title>` → Browser tab name
+* `<body>` → Visible content
+* `<h1>` → Heading (Hello World)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+▶️ How to Run the Web Page
+
+1. Save the file
+2. Right-click → **Open with Browser**
+3. Browser displays **Hello World**
+
+✔ Congratulations! Your first web page is live 🎉
+
+---
+
+🧪 Alternative Example (Using Paragraph)
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <p>Hello World</p>
+</body>
+</html>
+```
+
+📌 `<h1>` → Bigger text
+📌 `<p>` → Normal paragraph
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ Common Beginner Mistakes
+
+* Forgetting `.html` extension
+* Missing opening or closing tags
+* Writing code outside `<body>`
+* Saving file incorrectly
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+* Always use `<!DOCTYPE html>`
+* Use proper indentation
+* Save file before refreshing browser
+* Use meaningful titles
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY 6 – Summary
+
+* Learned what a web page is
+* Created first HTML file
+* Printed “Hello World”
+* Ran HTML in browser
+* Understood basic structure
