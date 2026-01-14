@@ -1,0 +1,212 @@
+📘 DAY 7 – HTML | Intermediate Level
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+🎯 Goal of Day 7
+
+✔ Understand **intermediate HTML concepts**
+✔ Learn **forms, tables, lists, semantic elements**
+✔ Build more **realistic web pages**
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🏷️ HTML Lists
+
+1️⃣ Ordered List (`<ol>`)
+
+Used when order matters.
+
+```html
+<ol>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+</ol>
+```
+
+---
+
+2️⃣ Unordered List (`<ul>`)
+
+Used when order doesn’t matter.
+
+```html
+<ul>
+  <li>Frontend</li>
+  <li>Backend</li>
+  <li>Database</li>
+</ul>
+```
+
+---
+
+3️⃣ Description List (`<dl>`)
+
+```html
+<dl>
+  <dt>HTML</dt>
+  <dd>Structure of web pages</dd>
+</dl>
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 HTML Tables
+
+Used to display **data in rows and columns**.
+
+```html
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Role</th>
+  </tr>
+  <tr>
+    <td>Saakshi</td>
+    <td>Developer</td>
+  </tr>
+</table>
+```
+
+Table Tags
+
+* `<table>` → Table
+* `<tr>` → Row
+* `<th>` → Header cell
+* `<td>` → Data cell
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📝 HTML Forms
+
+Forms are used to **collect user input**.
+
+```html
+<form>
+  <label>Name:</label>
+  <input type="text"><br><br>
+
+  <label>Email:</label>
+  <input type="email"><br><br>
+
+  <input type="submit" value="Submit">
+</form>
+```
+
+---
+
+🔢 Common Input Types
+
+| Type       | Use               |
+| ---------- | ----------------- |
+| `text`     | Name              |
+| `email`    | Email             |
+| `password` | Password          |
+| `number`   | Age               |
+| `radio`    | Select one option |
+| `checkbox` | Multiple options  |
+| `submit`   | Send form         |
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔗 HTML Links (`<a>`)
+
+Used to navigate between pages.
+
+```html
+<a href="https://google.com">Go to Google</a>
+```
+
+Open in New Tab
+
+```html
+<a href="https://google.com" target="_blank">Google</a>
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🖼️ HTML Images (`<img>`)
+
+```html
+<img src="image.jpg" alt="Sample Image" width="200">
+```
+
+📌 `alt` helps with accessibility & SEO
+
+---
+
+🧱 Semantic Elements (Very Important)
+
+Semantic tags give **meaning** to content.
+
+| Tag         | Purpose             |
+| ----------- | ------------------- |
+| `<header>`  | Top section         |
+| `<nav>`     | Navigation          |
+| `<section>` | Content section     |
+| `<article>` | Independent content |
+| `<aside>`   | Sidebar             |
+| `<footer>`  | Bottom section      |
+
+📌 Used in **modern websites**
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 HTML Block vs Inline Elements
+
+Block Elements
+
+* Take full width
+* Start on new line
+  Examples: `<div>`, `<p>`, `<h1>`
+
+Inline Elements
+
+* Take only required space
+  Examples: `<span>`, `<a>`, `<img>`
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 HTML Attributes
+
+Attributes provide **extra information**.
+
+```html
+<input type="text" placeholder="Enter name" required>
+```
+
+Common attributes:
+
+* `id`
+* `class`
+* `style`
+* `title`
+* `placeholder`
+* `required`
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ Common Mistakes (Intermediate Level)
+
+* Not using semantic tags
+* Forgetting `alt` in images
+* Poor indentation
+* Overusing `<div>`
+
+---
+
+💡 Best Practices
+
+* Use semantic HTML
+* Keep code clean & readable
+* Use proper labels in forms
+* Always validate input
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY 7 – Summary
+
+* Learned lists & tables
+* Worked with forms & inputs
+* Used links & images
+* Understood semantic elements
+* Improved HTML structure
