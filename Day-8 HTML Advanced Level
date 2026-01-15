@@ -1,0 +1,211 @@
+📘 DAY 8 – HTML | Advanced Level
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 8
+
+✔ Learn **advanced HTML concepts**
+✔ Understand **forms validation, multimedia, iframe, data attributes**
+✔ Write **production-ready HTML**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Advanced HTML Forms
+
+🔐 Form Validation (Built-in HTML)
+
+HTML5 provides **client-side validation** without JavaScript.
+
+```html
+<form>
+  <input type="email" required placeholder="Enter email">
+  <input type="password" minlength="6" required>
+  <input type="submit">
+</form>
+```
+
+Common Validation Attributes
+
+| Attribute   | Purpose            |
+| ----------- | ------------------ |
+| `required`  | Mandatory field    |
+| `minlength` | Minimum characters |
+| `maxlength` | Maximum characters |
+| `pattern`   | Custom regex       |
+| `readonly`  | Read-only input    |
+| `disabled`  | Disabled field     |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 Advanced Input Types
+
+```html
+<input type="date">
+<input type="time">
+<input type="color">
+<input type="range">
+<input type="file">
+```
+
+📌 Improves UX and reduces errors
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 HTML Data Attributes
+
+Used to store **custom data** in HTML elements.
+
+```html
+<button data-user-id="101">Click</button>
+```
+
+📌 Accessed using JavaScript
+📌 Keeps HTML clean and flexible
+
+---
+
+🧱 iframe (Embedding Content)
+
+Used to embed **external content** like maps, videos, websites.
+
+```html
+<iframe src="https://example.com" width="400" height="300"></iframe>
+```
+
+📌 Common uses:
+
+* YouTube videos
+* Google Maps
+* External pages
+
+---
+
+🎥 Advanced Multimedia
+
+### Video with Controls & Poster
+
+```html
+<video controls width="400" poster="thumbnail.jpg">
+  <source src="video.mp4" type="video/mp4">
+</video>
+```
+
+Audio with Loop
+
+```html
+<audio controls loop>
+  <source src="audio.mp3" type="audio/mpeg">
+</audio>
+```
+
+---
+
+📐 Meta Tags (SEO & Performance)
+
+Meta tags go inside `<head>`.
+
+```html
+<meta name="description" content="HTML Advanced Notes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+📌 Important for:
+
+* SEO
+* Mobile responsiveness
+* Performance
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 HTML Accessibility (A11Y)
+
+### Accessibility Best Practices
+
+* Use semantic tags
+* Always use `alt` for images
+* Use `<label>` with `<input>`
+* Proper heading order (`h1` → `h6`)
+
+```html
+<label for="name">Name</label>
+<input id="name" type="text">
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 HTML Entities
+
+Used to display **reserved characters**.
+
+| Entity   | Symbol |
+| -------- | ------ |
+| `&lt;`   | <      |
+| `&gt;`   | >      |
+| `&copy;` | ©      |
+| `&nbsp;` | space  |
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧱 Advanced Semantic Layout Example
+
+```html
+<header>Header</header>
+<nav>Menu</nav>
+<main>
+  <section>Content</section>
+  <article>Article</article>
+</main>
+<footer>Footer</footer>
+```
+
+📌 Used in professional websites
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔗 HTML + CSS + JS Relationship
+
+* HTML → Structure
+* CSS → Styling
+* JavaScript → Logic & interaction
+
+📌 HTML is the backbone
+
+❌ Common Advanced-Level Mistakes
+
+* Ignoring accessibility
+* Missing meta viewport
+* Overusing iframe
+* Poor form validation
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices (Advanced)
+
+* Use semantic HTML
+* Optimize media files
+* Validate forms
+* Write accessible code
+* Keep HTML clean & minimal
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 Suggested Folder Structure
+
+```
+HTML/
+│
+├── DAY-6-First-Web-Page.md
+├── DAY-7-HTML-Intermediate.md
+├── DAY-8-HTML-Advanced.md
+└── advanced-form.html
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY 8 – Summary
+
+* Advanced forms & validation
+* New input types
+* Data attributes
+* iframe & multimedia
+* Accessibility & SEO
+* Production-ready HTML
