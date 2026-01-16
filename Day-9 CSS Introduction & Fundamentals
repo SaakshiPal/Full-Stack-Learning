@@ -1,0 +1,232 @@
+
+🎨 DAY 9 – CSS | Introduction & Fundamentals
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌐 What is CSS?
+
+**CSS (Cascading Style Sheets)** is used to **style and design web pages**.
+
+* Controls colors, fonts, layout, spacing
+* Works with HTML
+* Makes websites **beautiful and responsive**
+
+📌 HTML = structure
+📌 CSS = style
+
+---
+
+🧠 Why CSS is Important
+
+* Separates content from design
+* Improves user experience (UX)
+* Makes websites responsive
+* Reduces code duplication
+* Used in all modern websites
+
+---
+
+🆚 HTML vs CSS
+
+| HTML         | CSS         |
+| ------------ | ----------- |
+| Structure    | Styling     |
+| Content      | Design      |
+| What to show | How to show |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧱 Ways to Apply CSS
+
+1️⃣ Inline CSS
+
+Written inside HTML tags.
+
+```html
+<h1 style="color: red;">Hello CSS</h1>
+```
+
+❌ Not recommended for large projects
+
+---
+
+2️⃣ Internal CSS
+
+Written inside `<style>` tag.
+
+```html
+<style>
+  h1 {
+    color: blue;
+  }
+</style>
+```
+
+📌 Used for small pages
+
+---
+
+3️⃣ External CSS (Best Practice)
+
+Written in a separate `.css` file.
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+✔ Reusable
+✔ Clean code
+✔ Scalable
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 CSS Syntax
+
+```css
+selector {
+  property: value;
+}
+```
+
+Example:
+
+```css
+p {
+  color: green;
+  font-size: 16px;
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 CSS Selectors
+
+Basic Selectors
+
+| Selector  | Example    |
+| --------- | ---------- |
+| Element   | `p {}`     |
+| Class     | `.box {}`  |
+| ID        | `#main {}` |
+| Universal | `* {}`     |
+
+---
+
+🧩 CSS Colors
+
+CSS supports multiple color formats.
+
+```css
+color: red;
+color: #ff0000;
+color: rgb(255, 0, 0);
+```
+
+---
+
+🔠 CSS Fonts
+
+```css
+p {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📐 CSS Box Model (Very Important)
+
+Every HTML element is a box.
+
+Box Model Parts
+
+* Content
+* Padding
+* Border
+* Margin
+
+```css
+div {
+  padding: 10px;
+  border: 2px solid black;
+  margin: 15px;
+}
+```
+
+---
+
+📏 Width & Height
+
+```css
+div {
+  width: 200px;
+  height: 100px;
+}
+```
+
+---
+
+🔗 CSS Units
+
+| Unit  | Description        |
+| ----- | ------------------ |
+| px    | Fixed size         |
+| %     | Relative           |
+| em    | Relative to parent |
+| rem   | Relative to root   |
+| vw/vh | Viewport           |
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 CSS Display Property
+
+```css
+span {
+  display: block;
+}
+```
+
+Common Values
+
+* `block`
+* `inline`
+* `inline-block`
+* `none`
+
+---
+
+🧠 CSS Comments
+
+```css
+/* This is a comment */
+```
+
+---
+
+❌ Common Beginner Mistakes
+
+* Using inline CSS everywhere
+* Mixing CSS & HTML
+* Ignoring box model
+* Overusing ID selectors
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+* Use external CSS
+* Use class selectors
+* Keep CSS organized
+* Use meaningful class names
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY 9 – Summary
+
+* Learned what CSS is
+* Ways to apply CSS
+* CSS syntax & selectors
+* Colors, fonts & units
+* Box model fundamentals
