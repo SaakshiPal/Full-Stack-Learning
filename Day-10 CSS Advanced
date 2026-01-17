@@ -1,0 +1,359 @@
+🎨 DAY 10 – CSS Advanced
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 10
+
+✔ Master **CSS layouts**
+✔ Learn **Flexbox & Grid**
+✔ Cover **remaining important CSS concepts**
+✔ Write **production-ready CSS**
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 CSS FLEXBOX (One-Dimensional Layout)
+
+Flexbox is used to align items in **one direction** (row OR column).
+
+---
+
+🧱 Flex Container
+
+```css
+.container {
+  display: flex;
+}
+```
+
+---
+
+➡️ Flex Direction
+
+```css
+flex-direction: row;        /* default */
+flex-direction: column;
+```
+
+---
+
+📐 Justify Content (Horizontal Alignment)
+
+```css
+justify-content: center;
+justify-content: space-between;
+justify-content: space-around;
+justify-content: space-evenly;
+```
+
+---
+
+📏 Align Items (Vertical Alignment)
+
+```css
+align-items: center;
+align-items: flex-start;
+align-items: flex-end;
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 Flex Wrap
+
+```css
+flex-wrap: wrap;
+```
+
+---
+
+📦 Flex Item Properties
+
+```css
+.item {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 200px;
+}
+```
+
+Shortcut:
+
+```css
+flex: 1 1 200px;
+```
+
+---
+
+✅ Flexbox Use Cases
+
+* Navbar
+* Cards layout
+* Centering elements
+* Simple responsive layouts
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 CSS GRID (Two-Dimensional Layout)
+
+Grid is used to design layouts in **rows AND columns**.
+
+---
+
+🧱 Grid Container
+
+```css
+.container {
+  display: grid;
+}
+```
+
+---
+
+📐 Define Columns & Rows
+
+```css
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: auto;
+```
+
+---
+
+📏 Gap Between Items
+
+```css
+gap: 20px;
+```
+
+---
+
+📦 Grid Item Placement
+
+```css
+.item {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+}
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 Auto Layout
+
+```css
+grid-template-columns: repeat(3, 1fr);
+```
+
+---
+
+✅ Grid Use Cases
+
+* Full website layout
+* Dashboards
+* Complex responsive designs
+
+---
+
+🆚 Flexbox vs Grid
+
+| Flexbox       | Grid            |
+| ------------- | --------------- |
+| 1D layout     | 2D layout       |
+| Content-based | Layout-based    |
+| Simple UI     | Complex layouts |
+
+📌 **Flexbox + Grid together = real-world websites**
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📍 CSS POSITIONING
+
+Types of Positioning
+
+```css
+position: static;   /* default */
+position: relative;
+position: absolute;
+position: fixed;
+position: sticky;
+```
+
+Examples
+
+```css
+.box {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📱 RESPONSIVE DESIGN (Very Important)
+
+Media Queries
+
+```css
+@media (max-width: 768px) {
+  body {
+    background-color: lightgray;
+  }
+}
+```
+
+📌 Makes website work on:
+
+* Mobile
+* Tablet
+* Desktop
+
+---
+
+🎯 CSS Z-INDEX
+
+Controls **layer order**.
+
+```css
+.box {
+  position: relative;
+  z-index: 10;
+}
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌈 CSS TRANSITIONS
+
+Smooth animations.
+
+```css
+button {
+  transition: background 0.3s ease;
+}
+```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎞️ CSS TRANSFORMS
+
+```css
+transform: rotate(10deg);
+transform: scale(1.2);
+transform: translateX(20px);
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎬 CSS ANIMATIONS
+
+```css
+@keyframes move {
+  from { left: 0; }
+  to { left: 100px; }
+}
+
+.box {
+  animation: move 2s infinite;
+}
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 CSS VARIABLES
+
+Reusable values.
+
+```css
+:root {
+  --main-color: blue;
+}
+
+h1 {
+  color: var(--main-color);
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 CSS OVERFLOW
+
+```css
+overflow: hidden;
+overflow: scroll;
+overflow: auto;
+```
+
+---
+
+🖱️ CSS PSEUDO-CLASSES
+
+```css
+a:hover {
+  color: red;
+}
+```
+
+Common:
+
+* `:hover`
+* `:active`
+* `:focus`
+* `:nth-child()`
+
+---
+
+🧾 CSS PSEUDO-ELEMENTS
+
+```css
+p::first-letter {
+  font-size: 30px;
+}
+```
+
+Common:
+
+* `::before`
+* `::after`
+* `::first-letter`
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ Common CSS Advanced Mistakes
+
+* Overusing `!important.`
+* Not using responsive units
+* Ignoring mobile-first design
+* Mixing Flexbox & Grid incorrectly
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices (Advanced CSS)
+
+* Use Flexbox & Grid together
+* Follow a mobile-first approach
+* Use CSS variables
+* Keep CSS modular
+* Avoid inline CSS
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 Suggested Folder Structure
+
+```
+CSS/
+│
+├── DAY-9-CSS-Introduction.md
+├── DAY-10-CSS-Advanced.md
+├── style.css
+└── index.html
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY 10 – Final Summary
+
+* Mastered Flexbox
+* Learned CSS Grid
+* Understood positioning
+* Built responsive layouts
+* Covered animations & variables
+* Completed core CSS 🎉
+
