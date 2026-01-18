@@ -1,0 +1,289 @@
+🎨 WEEK 2 – DAY 4 Bootstrap | Complete Guide
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌐 What is Bootstrap?
+
+**Bootstrap** is a **popular CSS framework** used to build **responsive, mobile-first websites quickly**.
+
+* Saves development time
+* Pre-built CSS & JS components
+* Works with HTML, CSS, JavaScript
+* Widely used in industry
+
+📌 Bootstrap = ready-made UI + responsiveness
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Why Use Bootstrap?
+
+* Mobile-first design
+* No need to write CSS from scratch
+* Consistent UI
+* Fast prototyping
+* Industry standard
+
+---
+
+🧩 Bootstrap Versions
+
+* Bootstrap 3 → old
+* Bootstrap 4 → improved
+* **Bootstrap 5 → latest & recommended**
+
+  * No jQuery dependency
+  * Better grid & utilities
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ How to Add Bootstrap
+
+1️⃣ Using CDN (Most Common)
+
+```html
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+```
+
+---
+
+2️⃣ Download Bootstrap
+
+* Download files
+* Link CSS & JS manually
+
+---
+
+📦 Bootstrap Container
+
+Used to wrap website content.
+
+```html
+<div class="container">Content</div>
+<div class="container-fluid">Full width</div>
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧱 Bootstrap Grid System (Very Important)
+
+Bootstrap uses a **12-column grid system**.
+
+Grid Structure
+
+```html
+<div class="row">
+  <div class="col">Column</div>
+  <div class="col">Column</div>
+</div>
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📱 Responsive Grid Breakpoints
+
+| Class   | Screen Size |
+| ------- | ----------- |
+| col-    | Extra small |
+| col-sm- | ≥576px      |
+| col-md- | ≥768px      |
+| col-lg- | ≥992px      |
+| col-xl- | ≥1200px     |
+
+Example:
+
+```html
+<div class="col-md-6 col-lg-4">Box</div>
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎨 Bootstrap Typography
+
+```html
+<h1 class="text-primary">Heading</h1>
+<p class="text-muted">Paragraph</p>
+```
+
+Text utilities:
+
+* `text-center`
+* `text-start`
+* `text-end`
+* `fw-bold`
+* `fst-italic`
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Bootstrap Colors
+
+```html
+text-primary
+text-success
+text-danger
+bg-warning
+bg-dark
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔘 Bootstrap Buttons
+
+```html
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-success">Success</button>
+<button class="btn btn-outline-danger">Delete</button>
+```
+
+Button sizes:
+
+* `btn-sm`
+* `btn-lg`
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🃏 Bootstrap Cards
+
+```html
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card Title</h5>
+    <p class="card-text">Card content</p>
+  </div>
+</div>
+```
+
+📌 Used for product cards, profiles, blogs
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧭 Bootstrap Navbar
+
+```html
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">MySite</a>
+</nav>
+```
+
+✔ Responsive
+✔ Collapsible menu
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📝 Bootstrap Forms
+
+```html
+<form>
+  <input type="text" class="form-control" placeholder="Enter name">
+</form>
+```
+
+Form classes:
+
+* `form-control`
+* `form-label`
+* `form-check`
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 Bootstrap Tables
+
+```html
+<table class="table table-bordered table-striped">
+  <tr><th>Name</th></tr>
+  <tr><td>User</td></tr>
+</table>
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 Bootstrap Utilities (Very Powerful)
+
+Spacing
+
+```html
+m-3   /* margin */
+p-2   /* padding */
+```
+
+Display
+
+```html
+d-flex
+d-none
+```
+
+Flex Utilities
+
+```html
+d-flex justify-content-center align-items-center
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎬 Bootstrap JavaScript Components
+
+Requires Bootstrap JS bundle.
+
+Components:
+
+* Modal
+* Dropdown
+* Carousel
+* Tooltip
+* Accordion
+
+Example Modal Trigger:
+
+```html
+<button data-bs-toggle="modal" data-bs-target="#myModal">Open</button>
+```
+
+---
+
+📱 Bootstrap Responsive Design
+
+* Mobile-first approach
+* Automatically adapts to screen size
+* No media queries needed in most cases
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🆚 Bootstrap vs Custom CSS
+
+| Bootstrap        | Custom CSS   |
+| ---------------- | ------------ |
+| Fast development | Full control |
+| Pre-built UI     | More code    |
+| Consistent       | Flexible     |
+
+📌 Real projects use **both**
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ Common Bootstrap Mistakes
+
+* Overusing classes
+* Ignoring grid system
+* Mixing Bootstrap & custom CSS badly
+* Not understanding utilities
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+* Use Bootstrap for layout
+* Customize using your own CSS
+* Follow grid system properly
+* Keep HTML clean
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-4 Summary (Week-2)
+
+* Bootstrap basics
+* Grid system
+* Components
+* Utilities
+* Responsive design
+* JS components
