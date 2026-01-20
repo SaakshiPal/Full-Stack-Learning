@@ -1,0 +1,272 @@
+📘 WEEK 2 – DAY 6 JavaScript | Introduction
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌐 What is JavaScript?
+
+**JavaScript (JS)** is a **programming language** used to make **web pages interactive and dynamic**.
+
+* Runs in the browser
+* Works with HTML & CSS
+* Adds logic and behavior to websites
+
+📌 HTML → Structure
+📌 CSS → Style
+📌 JavaScript → Logic & interaction
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Why JavaScript is Important
+
+* Makes websites interactive
+* Handles user actions (click, input)
+* Validates forms
+* Updates content without reloading
+* Core skill for frontend & full stack developers
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What Can JavaScript Do?
+
+* Show alerts
+* Change HTML content
+* Change styles
+* Validate forms
+* Fetch data from servers
+* Build full applications
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ Ways to Use JavaScript
+
+1️⃣ Inline JavaScript
+
+```html
+<button onclick="alert('Hello JS')">Click</button>
+```
+
+❌ Not recommended for large projects
+
+---
+
+2️⃣ Internal JavaScript
+
+```html
+<script>
+  alert("Hello JavaScript");
+</script>
+```
+
+---
+
+3️⃣ External JavaScript (Best Practice)
+
+```html
+<script src="script.js"></script>
+```
+
+✔ Clean
+✔ Reusable
+✔ Scalable
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧾 First JavaScript Program
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Hello JavaScript</h1>
+
+  <script>
+    console.log("Hello World");
+  </script>
+</body>
+</html>
+```
+
+📌 Output appears in **browser console**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🖥️ JavaScript Console
+
+Used for **debugging and testing**.
+
+```js
+console.log("This is console output");
+```
+
+📌 Open with:
+
+* Right click → Inspect → Console
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 Variables in JavaScript
+
+Variables store data.
+
+```js
+let name = "Saakshi";
+const age = 21;
+var city = "Delhi";
+```
+
+Variable Keywords
+
+| Keyword | Use            |
+| ------- | -------------- |
+| `let`   | Changeable     |
+| `const` | Constant value |
+| `var`   | Old (avoid)    |
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔢 Data Types
+
+```js
+let number = 10;        // Number
+let text = "Hello";    // String
+let isTrue = true;     // Boolean
+let value = null;      // Null
+let x;                 // Undefined
+```
+
+---
+
+➕ Operators
+
+Arithmetic Operators
+
+```js
++  -  *  /  %
+```
+
+Comparison Operators
+
+```js
+==   ===   !=   >   <
+```
+
+📌 `===` checks **value + type**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔀 Conditional Statements
+
+if-else
+
+```js
+let age = 18;
+
+if (age >= 18) {
+  console.log("Adult");
+} else {
+  console.log("Minor");
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 Loops
+
+for loop
+
+```js
+for (let i = 1; i <= 5; i++) {
+  console.log(i);
+}
+```
+
+while loop
+
+```js
+let i = 1;
+while (i <= 3) {
+  console.log(i);
+  i++;
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 Functions
+
+Functions are reusable blocks of code.
+
+```js
+function greet() {
+  console.log("Hello User");
+}
+
+greet();
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🖱️ JavaScript Events
+
+Events happen when users interact.
+
+```html
+<button onclick="show()">Click Me</button>
+
+<script>
+  function show() {
+    alert("Button Clicked");
+  }
+</script>
+```
+
+Common events:
+
+* `onclick`
+* `onchange`
+* `onmouseover`
+* `onkeydown`
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌳 Introduction to DOM
+
+**DOM (Document Object Model)** allows JavaScript to interact with HTML.
+
+```js
+document.getElementById("title").innerHTML = "Hello JS";
+```
+
+📌 JS can:
+
+* Read HTML
+* Change HTML
+* Change CSS
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ Common Beginner Mistakes
+
+* Forgetting semicolons
+* Using `var`
+* Writing JS outside `<script>`
+* Not checking console errors
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+* Use external JS files
+* Use `let` and `const`
+* Write clean & readable code
+* Use console for debugging
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-6 Summary (Week-2)
+
+* What JavaScript is
+* Ways to use JavaScript
+* Variables & data types
+* Conditions & loops
+* Functions & events
+* Intro to DOM
