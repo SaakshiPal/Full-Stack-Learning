@@ -1,0 +1,284 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 3 – DAY 6 JavaScript | Events (Deep Dive)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+🎯 Goal of Day 6
+
+✔ Understand **what events are**
+✔ Learn **different types of events**
+✔ Use **addEventListener** correctly
+✔ Understand **event object, bubbling & capturing**
+✔ Handle **real-world user interactions**
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is an Event?
+
+An **event** is an action that happens in the browser.
+
+📌 Examples:
+
+* User clicks a button
+* User types in input
+* Page loads
+* Form is submitted
+
+JavaScript **listens** to these events and **responds**.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 Common Types of JavaScript Events
+
+🖱️ Mouse Events
+
+* `click`
+* `dblclick`
+* `mouseover`
+* `mouseout`
+* `mousemove`
+
+---
+
+⌨️ Keyboard Events
+
+* `keydown`
+* `keyup`
+* `keypress` (deprecated)
+
+---
+
+📝 Form Events
+
+* `submit`
+* `change`
+* `focus`
+* `blur`
+* `input`
+
+---
+
+🌐 Window Events
+
+* `load`
+* `resize`
+* `scroll`
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ Ways to Handle Events
+
+1️⃣ Inline Event Handling ❌
+
+```html
+<button onclick="alert('Clicked')">Click</button>
+```
+
+📌 Not recommended
+
+---
+
+2️⃣ Event Property ❌
+
+```js
+button.onclick = function () {
+  alert("Clicked");
+};
+```
+
+---
+
+3️⃣ addEventListener (Best Practice ⭐)
+
+```js
+button.addEventListener("click", function () {
+  alert("Button clicked");
+});
+```
+
+✔ Multiple events allowed
+✔ Cleaner code
+✔ Most used in real projects
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 The Event Object
+
+The **event object** contains information about the event.
+
+```js
+button.addEventListener("click", function (event) {
+  console.log(event);
+});
+```
+
+Common properties:
+
+* `event.type`
+* `event.target`
+* `event.preventDefault()`
+
+
+🚫 preventDefault()
+
+Stops default browser behavior.
+
+```js
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  console.log("Form submitted");
+});
+```
+
+📌 Used in:
+
+* Form validation
+* SPA navigation
+
+---
+
+🎯 Event Target
+
+Refers to the element that triggered the event.
+
+```js
+event.target.style.backgroundColor = "yellow";
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 Event Bubbling (Default Behavior)
+
+Event flows **from child → parent**.
+
+```html
+<div id="parent">
+  <button id="child">Click</button>
+</div>
+```
+
+```js
+child.addEventListener("click", () => {
+  console.log("Child clicked");
+});
+
+parent.addEventListener("click", () => {
+  console.log("Parent clicked");
+});
+```
+
+📌 Output:
+
+```
+Child clicked
+Parent clicked
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Event Capturing
+
+Event flows **from parent → child**.
+
+```js
+parent.addEventListener("click", () => {
+  console.log("Parent");
+}, true);
+```
+
+📌 Third parameter `true` enables capturing
+
+---
+
+✋ stopPropagation()
+
+Stops event bubbling or capturing.
+
+```js
+child.addEventListener("click", function (e) {
+  e.stopPropagation();
+  console.log("Only child");
+});
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 Event Delegation (Very Important ⭐)
+
+Attach event to parent instead of many children.
+
+```js
+list.addEventListener("click", function (e) {
+  if (e.target.tagName === "LI") {
+    console.log(e.target.textContent);
+  }
+});
+```
+
+📌 Improves performance
+📌 Used in dynamic lists (Todo apps)
+
+---
+
+🧪 Keyboard Event Example
+
+```js
+input.addEventListener("keydown", function (e) {
+  console.log(e.key);
+});
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📜 Window Events
+
+Page Load
+
+```js
+window.addEventListener("load", () => {
+  console.log("Page loaded");
+});
+```
+
+---
+
+Scroll
+
+```js
+window.addEventListener("scroll", () => {
+  console.log(window.scrollY);
+});
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ Common Event Mistakes
+
+* Using inline events
+* Forgetting `preventDefault`
+* Not understanding bubbling
+* Attaching too many listeners
+* Not removing unused listeners
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+* Always use `addEventListener`
+* Use event delegation
+* Keep event handlers small
+* Understand bubbling & capturing
+* Avoid inline JS
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-6 Summary (Week-3)
+
+* What events are
+* Event types
+* addEventListener
+* Event object
+* Bubbling & capturing
+* Event delegation
+* Real-world handling
+
