@@ -1,0 +1,258 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 3 – DAY 7 JavaScript | OOPs (Object-Oriented Programming)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+🎯 Goal of Day 7
+
+✔ Understand **OOP concepts**
+✔ Learn **how JavaScript supports OOP**
+✔ Use **classes & objects**
+✔ Apply OOP in **real-world applications**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is OOP?
+
+**OOP (Object-Oriented Programming)** is a programming approach based on **objects**.
+
+📌 Objects contain:
+
+* **Properties** (data)
+* **Methods** (functions)
+
+📌 OOP helps in:
+
+* Code reusability
+* Better structure
+* Easy maintenance
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧱 Core OOP Concepts
+
+1. Object
+2. Class
+3. Encapsulation
+4. Inheritance
+5. Polymorphism
+6. Abstraction
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 Objects in JavaScript
+
+An object represents a **real-world entity**.
+
+```js
+let user = {
+  name: "Saakshi",
+  age: 21,
+  greet() {
+    console.log("Hello " + this.name);
+  }
+};
+
+user.greet();
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🏗️ Classes in JavaScript
+
+A **class** is a blueprint for creating objects.
+
+```js
+class User {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log("Hello " + this.name);
+  }
+}
+
+const user1 = new User("Saakshi", 21);
+user1.greet();
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔐 Encapsulation
+
+Encapsulation means **binding data and methods together** and controlling access.
+
+```js
+class BankAccount {
+  constructor(balance) {
+    this.balance = balance;
+  }
+
+  deposit(amount) {
+    this.balance += amount;
+  }
+}
+```
+
+📌 Keeps data safe
+📌 Prevents misuse
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧬 Inheritance
+
+Inheritance allows one class to **inherit properties & methods** of another class.
+
+```js
+class Person {
+  speak() {
+    console.log("Speaking");
+  }
+}
+
+class Student extends Person {
+  study() {
+    console.log("Studying");
+  }
+}
+
+const s1 = new Student();
+s1.speak();
+s1.study();
+```
+
+📌 Promotes code reuse
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 Polymorphism
+
+Polymorphism allows **same method name** with **different behavior**.
+
+```js
+class Animal {
+  sound() {
+    console.log("Animal sound");
+  }
+}
+
+class Dog extends Animal {
+  sound() {
+    console.log("Bark");
+  }
+}
+
+const dog = new Dog();
+dog.sound();
+```
+
+📌 Method overriding
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🫥 Abstraction
+
+Abstraction means **hiding implementation details** and showing only essentials.
+
+```js
+class Car {
+  start() {
+    this.#engineStart();
+    console.log("Car started");
+  }
+
+  #engineStart() {
+    console.log("Engine running");
+  }
+}
+```
+
+📌 Focus on *what* not *how*
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔒 Private Fields (`#`)
+
+Used to restrict access.
+
+```js
+class User {
+  #password;
+
+  constructor(pass) {
+    this.#password = pass;
+  }
+}
+```
+
+📌 Accessible only inside class
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧬 Prototypes (Behind the Scenes)
+
+JavaScript uses **prototype-based inheritance**.
+
+```js
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.greet = function () {
+  console.log("Hello " + this.name);
+};
+```
+
+📌 Classes internally use prototypes
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🆚 OOP vs Procedural Programming
+
+| OOP              | Procedural     |
+| ---------------- | -------------- |
+| Object-based     | Function-based |
+| Reusable         | Less reusable  |
+| Easy to maintain | Hard to scale  |
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Real-World OOP Examples
+
+* User → Object
+* Bank Account → Class
+* E-commerce Product → Object
+* UI Component → Class
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ Common OOP Mistakes
+
+* Overusing inheritance
+* Not using `this` correctly
+* Forgetting `new` keyword
+* Writing large classes
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ Best Practices
+
+* Use meaningful class names
+* Keep classes small
+* Prefer composition over inheritance
+* Use encapsulation
+* Follow DRY principle
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-7 Summary (Week-3)
+
+* OOP basics
+* Objects & classes
+* Encapsulation
+* Inheritance
+* Polymorphism
+* Abstraction
+* Prototypes
