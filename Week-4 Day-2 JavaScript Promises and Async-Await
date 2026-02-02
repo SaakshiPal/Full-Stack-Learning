@@ -1,0 +1,262 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 4 – DAY 2 JavaScript | Promises & Async/Await (Deep Dive)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 2
+
+✔ Understand **asynchronous JavaScript**
+✔ Learn **Promises in depth**
+✔ Master **async / await**
+✔ Handle **errors properly**
+✔ Write **clean, real-world async code**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is Asynchronous JavaScript?
+
+**Asynchronous JS** allows tasks to run **without blocking** the main thread.
+
+📌 Used for:
+
+* API calls
+* Timers
+* File loading
+* Database requests
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⏳ Synchronous vs Asynchronous
+
+Synchronous ❌
+
+* Tasks run **one by one**
+* Slow operations block execution
+
+Asynchronous ✅
+
+* Long tasks run in background
+* App stays responsive
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 JavaScript Promise
+
+A **Promise** represents a value that will be available **now, later, or never**.
+
+Promise States
+
+1. **Pending**
+2. **Fulfilled**
+3. **Rejected**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧾 Creating a Promise
+
+```js
+const promise = new Promise((resolve, reject) => {
+  let success = true;
+
+  if (success) {
+    resolve("Operation successful");
+  } else {
+    reject("Operation failed");
+  }
+});
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔗 Consuming a Promise (`then`, `catch`, `finally`)
+
+```js
+promise
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.log(error);
+  })
+  .finally(() => {
+    console.log("Done");
+  });
+```
+
+📌
+
+* `then()` → success
+* `catch()` → error
+* `finally()` → always runs
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 Promise Chaining
+
+```js
+getData()
+  .then(data => processData(data))
+  .then(result => saveData(result))
+  .catch(err => console.log(err));
+```
+
+📌 Avoids callback hell
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Callback Hell (Problem)
+
+```js
+task1(() => {
+  task2(() => {
+    task3(() => {
+      console.log("Done");
+    });
+  });
+});
+```
+
+❌ Hard to read
+❌ Hard to debug
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚡ async / await (Modern Way ⭐)
+
+`async / await` is a **cleaner way to work with Promises**.
+
+---
+
+🧾 Basic async / await Example
+
+```js
+async function getData() {
+  return "Hello Async";
+}
+
+getData().then(console.log);
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⏳ await Keyword
+
+```js
+async function fetchData() {
+  let result = await promise;
+  console.log(result);
+}
+```
+
+📌 `await` pauses execution until Promise resolves
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌐 Real Example: Fetch API
+
+```js
+async function fetchUsers() {
+  try {
+    let response = await fetch("https://jsonplaceholder.typicode.com/users");
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚫 Error Handling with try–catch
+
+```js
+async function test() {
+  try {
+    let result = await promise;
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
+```
+
+📌 Always use `try–catch` with async/await
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 Promise vs Async/Await
+
+| Promises         | Async/Await        |
+| ---------------- | ------------------ |
+| `.then()` chains | Looks synchronous  |
+| Harder to read   | Cleaner & readable |
+| Nested chains    | Flat structure     |
+
+📌 **async/await preferred in modern apps**
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⏱️ Multiple Promises
+
+Promise.all()
+
+Runs promises **in parallel**.
+
+```js
+Promise.all([p1, p2, p3])
+  .then(results => console.log(results));
+```
+
+📌 Fails if **any** promise fails
+
+---
+
+Promise.race()
+
+Returns **first completed** promise.
+
+```js
+Promise.race([p1, p2]);
+```
+
+---
+
+Promise.allSettled()
+
+Returns result of **all promises**, even if failed.
+
+```js
+Promise.allSettled([p1, p2]);
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ Common Async Mistakes
+
+* Forgetting `await`
+* Not handling errors
+* Mixing `.then()` with `await`
+* Blocking async code with loops
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+* Prefer `async / await`
+* Always handle errors
+* Use `Promise.all()` for parallel tasks
+* Keep async functions small
+* Avoid callback hell
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-2 Summary (Week-4)
+
+* Async JavaScript basics
+* Promises & states
+* then / catch / finally
+* async / await
+* Error handling
+* Promise utilities
