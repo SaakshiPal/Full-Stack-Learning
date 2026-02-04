@@ -1,0 +1,304 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 4 – DAY 4 JavaScript | Modules & Advanced Topics
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 4
+
+✔ Understand **JavaScript Modules**
+✔ Learn **import & export**
+✔ Cover **important advanced JS concepts**
+✔ Write **clean, scalable, professional code**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 What are JavaScript Modules?
+
+**Modules** allow you to **split code into multiple files** and reuse it.
+
+📌 Benefits:
+
+* Clean code
+* Better organization
+* Reusability
+* Easy maintenance
+* Used in React, Node.js, Next.js
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📤 Exporting from a Module
+
+Named Export
+
+```js
+// math.js
+export function add(a, b) {
+  return a + b;
+}
+
+export const PI = 3.14;
+```
+
+---
+
+Default Export
+
+```js
+// greet.js
+export default function greet() {
+  console.log("Hello");
+}
+```
+
+📌 One default export per file
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📥 Importing a Module
+
+Import Named Export
+
+```js
+import { add, PI } from "./math.js";
+```
+
+---
+
+Import Default Export
+
+```js
+import greet from "./greet.js";
+```
+
+---
+
+Import Everything
+
+```js
+import * as math from "./math.js";
+math.add(2, 3);
+```
+
+---
+
+🌐 Using Modules in HTML
+
+```html
+<script type="module" src="script.js"></script>
+```
+
+📌 Required for ES Modules in browser
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Advanced JavaScript Topics
+
+---
+
+🔒 Scope (Deep Dive)
+
+Global Scope
+
+```js
+let x = 10;
+```
+
+Block Scope
+
+```js
+{
+  let y = 20;
+}
+```
+
+📌 `let` & `const` are block scoped
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Hoisting
+
+JavaScript moves declarations to the top.
+
+```js
+console.log(a); // undefined
+var a = 10;
+```
+
+❌ `let` & `const` are NOT usable before declaration
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 Closures (Very Important ⭐)
+
+A **closure** allows a function to remember variables from its outer scope.
+
+```js
+function outer() {
+  let count = 0;
+
+  return function inner() {
+    count++;
+    return count;
+  };
+}
+
+const counter = outer();
+counter(); // 1
+counter(); // 2
+```
+
+📌 Used in:
+
+* Data privacy
+* Counters
+* Event handlers
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Call Stack
+
+Tracks **function execution order**.
+
+📌 LIFO (Last In, First Out)
+
+```js
+function a() {
+  b();
+}
+function b() {
+  console.log("B");
+}
+a();
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Event Loop (Conceptual)
+
+Handles **asynchronous tasks**.
+
+📌 Components:
+
+* Call Stack
+* Web APIs
+* Callback Queue
+* Event Loop
+
+📌 Enables:
+
+* Non-blocking JS
+* Async behavior
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⏱️ setTimeout Execution Order
+
+```js
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Timeout");
+}, 0);
+
+console.log("End");
+```
+
+Output:
+
+```
+Start
+End
+Timeout
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧪 Shallow vs Deep Copy
+
+Shallow Copy
+
+```js
+let copy = { ...obj };
+```
+
+Deep Copy
+
+```js
+let deep = JSON.parse(JSON.stringify(obj));
+```
+
+📌 Important for objects & arrays
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 `this` Keyword (Quick Recap)
+
+```js
+const user = {
+  name: "Saakshi",
+  greet() {
+    console.log(this.name);
+  }
+};
+```
+
+📌 `this` depends on **how function is called**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 Currying (Intro)
+
+Transform function with multiple arguments into sequence.
+
+```js
+function multiply(a) {
+  return function (b) {
+    return a * b;
+  };
+}
+
+multiply(2)(3); // 6
+```
+
+---
+
+🧾 Memoization (Concept)
+
+Caching function results to improve performance.
+
+📌 Used in:
+
+* Heavy calculations
+* Optimization
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ Common Advanced JS Mistakes
+
+* Forgetting `type="module"`
+* Circular imports
+* Misunderstanding `this`
+* Not understanding closures
+* Mutating shared objects
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+* Use modules always
+* Keep one responsibility per file
+* Use named exports
+* Understand closures & scope
+* Avoid global variables
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-4 Summary (Week-4)
+
+* JavaScript modules
+* import & export
+* Scope & hoisting
+* Closures
+* Call stack & event loop
+* Advanced JS concepts
