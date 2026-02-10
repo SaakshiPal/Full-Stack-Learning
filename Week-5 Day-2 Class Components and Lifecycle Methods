@@ -1,0 +1,269 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 5 – DAY 2 React | Class Components & Lifecycle Methods
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 2
+
+✔ Understand **class components**
+✔ Learn **state & props in class components**
+✔ Master **lifecycle methods**
+✔ Know **when and why class components were used**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is a Class Component?
+
+A **class component** is a React component created using an **ES6 class**.
+
+* Extends `React.Component`
+* Uses `render()` method
+* Can manage **state**
+* Uses **lifecycle methods**
+
+📌 Older way of writing React components
+📌 Mostly replaced by **functional components + hooks**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧾 Basic Class Component Example
+
+```jsx
+import React from "react";
+
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello React</h1>;
+  }
+}
+
+export default Welcome;
+```
+
+📌 `render()` is mandatory
+📌 JSX must be returned from `render()`
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🆚 Functional vs Class Components (Quick Recap)
+
+| Functional           | Class                  |
+| -------------------- | ---------------------- |
+| JavaScript function  | ES6 class              |
+| Uses Hooks           | Uses lifecycle methods |
+| Less code            | More boilerplate       |
+| Modern & preferred⭐ | Legacy                |
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 Props in Class Components
+
+Props are accessed using `this.props`.
+
+```jsx
+class User extends React.Component {
+  render() {
+    return <h2>Hello {this.props.name}</h2>;
+  }
+}
+
+// Usage
+<User name="Saakshi" />
+```
+
+📌 Props are **read-only**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 State in Class Components
+
+State stores **dynamic data**.
+
+Initializing State
+
+```jsx
+class Counter extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 0
+    };
+  }
+
+  render() {
+    return <h1>{this.state.count}</h1>;
+  }
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 Updating State (`setState`)
+
+```jsx
+this.setState({
+  count: this.state.count + 1
+});
+```
+
+📌 Never update state directly
+❌ `this.state.count++`
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧬 What are Lifecycle Methods?
+
+Lifecycle methods are **special methods** that run at **different stages** of a component’s life.
+
+📌 Used for:
+
+* API calls
+* DOM updates
+* Cleanup
+* Performance optimization
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Lifecycle Phases
+
+1️⃣ Mounting (Component is created)
+
+* `constructor()`
+* `render()`
+* `componentDidMount()`
+
+---
+
+2️⃣ Updating (State/Props change)
+
+* `render()`
+* `componentDidUpdate()`
+
+---
+
+3️⃣ Unmounting (Component removed)
+
+* `componentWillUnmount()`
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 componentDidMount()
+
+Runs **once after component renders**.
+
+📌 Best place for:
+
+* API calls
+* Subscriptions
+* Timers
+
+```jsx
+componentDidMount() {
+  console.log("Component mounted");
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 componentDidUpdate()
+
+Runs **after state or props update**.
+
+```jsx
+componentDidUpdate(prevProps, prevState) {
+  if (prevState.count !== this.state.count) {
+    console.log("Count updated");
+  }
+}
+```
+
+📌 Always compare previous values to avoid infinite loops
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ componentWillUnmount()
+
+Runs **before component is destroyed**.
+
+```jsx
+componentWillUnmount() {
+  console.log("Component removed");
+}
+```
+
+📌 Cleanup:
+
+* Timers
+* Event listeners
+* Subscriptions
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Complete Lifecycle Example
+
+```jsx
+class Demo extends React.Component {
+  constructor() {
+    super();
+    this.state = { count: 0 };
+  }
+
+  componentDidMount() {
+    console.log("Mounted");
+  }
+
+  componentDidUpdate() {
+    console.log("Updated");
+  }
+
+  componentWillUnmount() {
+    console.log("Unmounted");
+  }
+
+  render() {
+    return <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+      {this.state.count}
+    </button>;
+  }
+}
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Deprecated Lifecycle Methods (Don’t Use ❌)
+
+* `componentWillMount`
+* `componentWillReceiveProps`
+* `componentWillUpdate`
+
+📌 Replaced by hooks
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ Common Beginner Mistakes
+
+* Forgetting `super()` in constructor
+* Updating state directly
+* Forgetting `this` keyword
+* Infinite loops in `componentDidUpdate`
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+* Prefer functional components
+* Use class components only to understand legacy code
+* Always use `setState`
+* Cleanup in `componentWillUnmount`
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-2 Summary (Week-5)
+
+* What class components are
+* Props & state in class components
+* Lifecycle phases
+* componentDidMount / Update / Unmount
+* Legacy vs modern React
+
