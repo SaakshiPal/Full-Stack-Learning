@@ -1,0 +1,236 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 5 – DAY 3 React | State (Complete Guide)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 3
+
+✔ Understand **what state is**
+✔ Learn **how state works in React**
+✔ Use `useState` correctly
+✔ Understand **re-rendering process**
+✔ Avoid common state mistakes
+
+---
+
+🧠 What is State in React?
+
+**State** is a built-in React object that is used to **store dynamic data** in a component.
+
+📌 State can change over time
+📌 When state changes → Component re-renders
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🆚 State vs Props
+
+| State                    | Props                   |
+| ------------------------ | ----------------------- |
+| Managed inside component | Passed from parent      |
+| Can change               | Read-only               |
+| Local                    | External                |
+| Triggers re-render       | Also triggers re-render |
+
+📌 Props = Data from outside
+📌 State = Data inside component
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 State in Functional Components (Modern Way ⭐)
+
+React uses **Hooks** to manage state.
+
+---
+
+🧾 useState Syntax
+
+```jsx
+import { useState } from "react";
+
+const [state, setState] = useState(initialValue);
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧪 Simple Counter Example
+
+```jsx
+import { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h2>{count}</h2>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </div>
+  );
+}
+```
+
+📌 `count` → current state
+📌 `setCount` → function to update state
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 How State Works Internally
+
+1. Initial render
+2. User clicks button
+3. `setCount()` updates state
+4. React creates new Virtual DOM
+5. UI updates automatically
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Multiple State Variables
+
+```jsx
+const [name, setName] = useState("");
+const [age, setAge] = useState(0);
+```
+
+📌 Each state is independent
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📦 State with Objects
+
+```jsx
+const [user, setUser] = useState({
+  name: "",
+  age: 0
+});
+```
+
+Updating Object State
+
+```jsx
+setUser({
+  ...user,
+  name: "Saakshi"
+});
+```
+
+📌 Always use **spread operator**
+❌ Don’t overwrite entire object unintentionally
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📚 State with Arrays
+
+```jsx
+const [items, setItems] = useState([]);
+```
+
+Add Item
+
+```jsx
+setItems([...items, "New Item"]);
+```
+
+📌 Never mutate array directly
+❌ `items.push()`
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 Updating State Based on Previous State
+
+```jsx
+setCount(prevCount => prevCount + 1);
+```
+
+📌 Recommended when:
+
+* Updating based on previous value
+* Multiple updates
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 State in Class Components (Recap)
+
+```jsx
+class Counter extends React.Component {
+  constructor() {
+    super();
+    this.state = { count: 0 };
+  }
+
+  render() {
+    return (
+      <button onClick={() =>
+        this.setState({ count: this.state.count + 1 })
+      }>
+        {this.state.count}
+      </button>
+    );
+  }
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Important Rules About State
+
+✔ Never modify state directly
+✔ Always use `setState` or setter function
+✔ State updates are asynchronous
+✔ State change causes re-render
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Re-rendering in React
+
+Component re-renders when:
+
+* State changes
+* Props change
+* Parent re-renders
+
+📌 React updates only changed parts (Virtual DOM)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ Common Beginner Mistakes
+
+❌ Modifying state directly
+❌ Forgetting spread operator
+❌ Overusing state
+❌ Storing derived data in state
+❌ Infinite re-renders
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Keep state minimal
+✔ Use one responsibility per state
+✔ Use functional updates
+✔ Keep state close to where it’s used
+✔ Avoid unnecessary re-renders
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World State Examples
+
+* Counter app
+* Form inputs
+* Toggle dark mode
+* Shopping cart
+* Todo list
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-3 Summary (Week-5)
+
+* What state is
+* useState hook
+* Updating state
+* Object & array state
+* Re-rendering process
+* Best practices
