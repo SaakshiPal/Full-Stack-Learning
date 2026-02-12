@@ -1,0 +1,249 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 5 – DAY 4 React | Event Handling
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 4
+
+✔ Understand **how events work in React**
+✔ Learn different **event types**
+✔ Handle **click, input, form events**
+✔ Understand **Synthetic Events**
+✔ Avoid common mistakes
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is Event Handling in React?
+
+Event handling in React is used to **respond to user actions**, such as:
+
+* Clicking a button
+* Typing in an input
+* Submitting a form
+* Hovering over elements
+
+📌 React uses **camelCase** for event names.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔤 HTML vs React Events
+
+| HTML     | React    |
+| -------- | -------- |
+| onclick  | onClick  |
+| onchange | onChange |
+| onsubmit | onSubmit |
+
+📌 React uses camelCase
+📌 Pass function, not string
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Basic Event Handling Example
+
+```jsx
+function App() {
+  function handleClick() {
+    alert("Button Clicked");
+  }
+
+  return <button onClick={handleClick}>Click Me</button>;
+}
+```
+
+✔ Pass function reference
+❌ `onClick="handleClick()"`
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔹 Inline Event Handler
+
+```jsx
+<button onClick={() => alert("Clicked")}>
+  Click
+</button>
+```
+
+📌 Useful for small logic
+⚠ Avoid complex inline functions
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷Event Handling with State
+
+```jsx
+import { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      {count}
+    </button>
+  );
+}
+```
+
+📌 Event updates state
+📌 State change → Re-render
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Handling Input Events
+
+```jsx
+function InputExample() {
+  const [name, setName] = useState("");
+
+  return (
+    <input 
+      type="text"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+    />
+  );
+}
+```
+
+📌 `e.target.value` gets input value
+📌 Controlled component
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Handling Form Submit
+
+```jsx
+function FormExample() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Form Submitted");
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+
+📌 Always use `preventDefault()`
+📌 Prevents page reload
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Synthetic Events in React
+
+React wraps browser events into **SyntheticEvent**.
+
+✔ Cross-browser compatible
+✔ Same API across all browsers
+
+Example:
+
+```jsx
+function handleClick(event) {
+  console.log(event.type);
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔁 Passing Arguments in Events
+
+```jsx
+<button onClick={() => handleClick("Saakshi")}>
+  Click
+</button>
+```
+
+📌 Use arrow function to pass parameters
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Event Handling in Class Components
+
+```jsx
+class Button extends React.Component {
+  handleClick = () => {
+    alert("Clicked");
+  };
+
+  render() {
+    return <button onClick={this.handleClick}>Click</button>;
+  }
+}
+```
+
+📌 Bind methods properly
+📌 Arrow functions auto-bind `this`
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 Common React Events
+
+Mouse Events
+
+* onClick
+* onDoubleClick
+* onMouseEnter
+* onMouseLeave
+
+---
+
+Keyboard Events
+
+* onKeyDown
+* onKeyUp
+
+---
+
+Form Events
+
+* onChange
+* onSubmit
+* onFocus
+* onBlur
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Beginner Mistakes
+
+❌ Writing `onClick={handleClick()}`
+❌ Forgetting `preventDefault()`
+❌ Mutating state directly
+❌ Complex inline functions
+❌ Forgetting to bind `this` (class)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Use separate handler functions
+✔ Keep logic clean
+✔ Use controlled components for forms
+✔ Use arrow functions for parameters
+✔ Keep components simple
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Examples
+
+* Counter app
+* Login form
+* Todo list
+* Toggle theme
+* Modal open/close
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-4 Summary (Week-5)
+
+* React event basics
+* CamelCase event naming
+* Handling clicks & inputs
+* Form submission
+* Synthetic events
+* Best practices
