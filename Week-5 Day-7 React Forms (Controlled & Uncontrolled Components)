@@ -1,0 +1,266 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 5 – DAY 7 React | Forms (Controlled & Uncontrolled Components)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 7
+
+✔ Understand **how forms work in React**
+✔ Learn **Controlled Components**
+✔ Learn **Uncontrolled Components**
+✔ Handle form inputs properly
+✔ Implement basic form validation
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Why Forms Are Important?
+
+Forms are used in:
+
+* Login pages
+* Signup forms
+* Search bars
+* Contact forms
+* Checkout pages
+
+React handles forms differently from plain HTML.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Controlled Components (Most Important ⭐)
+
+A **controlled component** is a form input whose value is controlled by **React state**.
+
+📌 React controls the form data
+📌 State is the single source of truth
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧾 Controlled Input Example
+
+```jsx
+import { useState } from "react";
+
+function LoginForm() {
+  const [email, setEmail] = useState("");
+
+  return (
+    <input
+      type="email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+    />
+  );
+}
+```
+
+✔ Input value comes from state
+✔ onChange updates state
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Controlled Form Example
+
+```jsx
+function SignupForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+      />
+
+      <input
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+      />
+
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+
+📌 Always use `preventDefault()`
+📌 Spread operator to update object state
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Uncontrolled Components
+
+An **uncontrolled component** stores data inside the DOM itself.
+
+📌 Uses `ref` to access value
+📌 Less commonly used
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧾 Uncontrolled Example
+
+```jsx
+import { useRef } from "react";
+
+function Form() {
+  const inputRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputRef.current.value);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" ref={inputRef} />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+
+📌 Value not stored in state
+📌 Accessed via `ref`
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🆚 Controlled vs Uncontrolled
+
+| Controlled           | Uncontrolled       |
+| -------------------- | ------------------ |
+| Uses state           | Uses ref           |
+| React controls input | DOM controls input |
+| Easy validation      | Less flexible      |
+| Preferred ⭐          | Rarely used        |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Handling Different Input Types
+
+Checkbox
+
+```jsx
+const [isChecked, setIsChecked] = useState(false);
+
+<input
+  type="checkbox"
+  checked={isChecked}
+  onChange={(e) => setIsChecked(e.target.checked)}
+/>
+```
+
+---
+
+Radio Button
+
+```jsx
+<input
+  type="radio"
+  value="male"
+  checked={gender === "male"}
+  onChange={(e) => setGender(e.target.value)}
+/>
+```
+
+---
+
+Select Dropdown
+
+```jsx
+<select value={city} onChange={(e) => setCity(e.target.value)}>
+  <option value="Delhi">Delhi</option>
+  <option value="Mumbai">Mumbai</option>
+</select>
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Basic Form Validation
+
+```jsx
+if (formData.email === "") {
+  alert("Email is required");
+}
+```
+
+Better approach:
+
+* Show error message in UI
+* Use validation libraries (future topic)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Mistakes
+
+❌ Forgetting `onChange`
+❌ Missing `name` attribute
+❌ Not using spread operator
+❌ Mixing controlled & uncontrolled inputs
+❌ Not preventing default form submit
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Use controlled components
+✔ Keep form state organized
+✔ Use single handler for multiple inputs
+✔ Validate before submit
+✔ Keep form logic separate
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Use Cases
+
+* Login system
+* Signup form
+* Contact form
+* Todo input
+* Search bar
+* Multi-step forms
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 Suggested Folder Structure
+
+```
+React/
+│
+├── components/
+│   ├── LoginForm.jsx
+│   ├── SignupForm.jsx
+│   └── ContactForm.jsx
+├── Week-5-Day-7-React-Forms-Controlled-Uncontrolled.md
+├── App.jsx
+└── main.jsx
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-7 Summary (Week-5)
+
+* Controlled components
+* Uncontrolled components
+* useState for forms
+* useRef for uncontrolled
+* Form submission
+* Basic validation
+* Best practices
