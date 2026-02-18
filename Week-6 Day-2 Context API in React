@@ -1,0 +1,253 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 6 – DAY 2 React | Context API
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 2
+
+✔ Understand **what Context API is**
+✔ Solve **prop drilling problem**
+✔ Learn `createContext`, `Provider`, `useContext`
+✔ Share global data efficiently
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is Context API?
+
+Context API is a way to **share data globally** in a React app **without passing props manually at every level**.
+
+📌 Introduced in React 16.3
+📌 Used for global state management
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ What is Prop Drilling?
+
+Prop drilling happens when you pass data through many components unnecessarily.
+
+### Example:
+
+```
+App
+ └── Parent
+      └── Child
+           └── GrandChild
+```
+
+If GrandChild needs data from App →
+You must pass props through Parent and Child 😓
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ Solution: Context API
+
+Context allows you to:
+
+* Store data globally
+* Access it anywhere
+* Avoid prop drilling
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Step 1: Create Context
+
+```jsx
+import { createContext } from "react";
+
+const MyContext = createContext();
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Step 2: Provide Context
+
+Wrap your components inside Provider.
+
+```jsx
+<MyContext.Provider value="Hello Context">
+  <Child />
+</MyContext.Provider>
+```
+
+📌 `value` is the data shared
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Step 3: Consume Context (useContext Hook)
+
+```jsx
+import { useContext } from "react";
+
+function Child() {
+  const value = useContext(MyContext);
+  return <h2>{value}</h2>;
+}
+```
+
+📌 Now Child gets data directly
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧾 Complete Example
+
+```jsx
+import React, { createContext, useContext } from "react";
+
+const UserContext = createContext();
+
+function App() {
+  return (
+    <UserContext.Provider value="Saakshi">
+      <Profile />
+    </UserContext.Provider>
+  );
+}
+
+function Profile() {
+  const user = useContext(UserContext);
+  return <h2>Welcome {user}</h2>;
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Context with State (More Practical)
+
+```jsx
+const ThemeContext = createContext();
+
+function App() {
+  const [theme, setTheme] = useState("light");
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <Home />
+    </ThemeContext.Provider>
+  );
+}
+```
+
+Access:
+
+```jsx
+const { theme, setTheme } = useContext(ThemeContext);
+```
+
+📌 Can update global state
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 When to Use Context API?
+
+✔ Authentication data
+✔ Theme (dark/light mode)
+✔ User info
+✔ Language settings
+✔ App settings
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ When NOT to Use Context
+
+❌ Frequently changing data (performance issues)
+❌ Very large global state
+❌ Complex state management
+
+For complex apps → Use Redux / Zustand
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🆚 Context API vs Props
+
+| Props               | Context              |
+| ------------------- | -------------------- |
+| Passed manually     | Global access        |
+| Good for small apps | Good for shared data |
+| Clear data flow     | Avoids prop drilling |
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Context API vs Redux (Basic Difference)
+
+| Context API         | Redux                    |
+| ------------------- | ------------------------ |
+| Built-in React      | External library         |
+| Simple global state | Complex state management |
+| Small-medium apps   | Large-scale apps         |
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❌ Common Mistakes
+
+❌ Overusing context
+❌ Forgetting Provider
+❌ Creating context inside component
+❌ Not memoizing value
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Keep context small
+✔ Split multiple contexts if needed
+✔ Use custom hooks for cleaner code
+✔ Wrap app at top level
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Custom Hook for Cleaner Context Usage
+
+```jsx
+function useUser() {
+  return useContext(UserContext);
+}
+```
+
+Usage:
+
+```jsx
+const user = useUser();
+```
+
+✔ Cleaner
+✔ Reusable
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Example Ideas
+
+* Dark mode toggle
+* Login authentication
+* Language switcher
+* Shopping cart
+* Dashboard settings
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 Suggested Folder Structure
+
+```
+React/
+│
+├── context/
+│   └── UserContext.jsx
+├── components/
+│   ├── Profile.jsx
+│   └── Home.jsx
+├── Week-6-Day-2-Context-API-in-React.md
+├── App.jsx
+└── main.jsx
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-2 Summary (Week-6)
+
+* What Context API is
+* Prop drilling problem
+* createContext
+* Provider
+* useContext
+* Global state usage
+* Best practices
