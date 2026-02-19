@@ -1,0 +1,271 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 6 – DAY 3 React | React Router (Navigation & Routing)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 3
+
+✔ Understand **what routing is**
+✔ Learn **React Router setup**
+✔ Create multiple pages
+✔ Navigate between pages
+✔ Use dynamic routes
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is Routing?
+
+Routing means:
+👉 Showing different components based on the URL.
+
+Example:
+
+* `/` → Home
+* `/about` → About Page
+* `/contact` → Contact Page
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🌐 What is React Router?
+
+React Router is a library used to:
+
+* Handle navigation in React apps
+* Create Single Page Applications (SPA)
+* Change UI without reloading page
+
+📌 Most used library: `react-router-dom`
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Step 1: Install React Router
+
+```bash
+npm install react-router-dom
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Step 2: Setup BrowserRouter
+
+Wrap your app with `BrowserRouter`.
+
+```jsx
+import { BrowserRouter } from "react-router-dom";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Home />
+    </BrowserRouter>
+  );
+}
+```
+
+📌 Usually done in `main.jsx` or `index.js`
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Step 3: Define Routes
+
+```jsx
+import { Routes, Route } from "react-router-dom";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+📌 `path` → URL
+📌 `element` → Component to render
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Step 4: Navigation using Link
+
+```jsx
+import { Link } from "react-router-dom";
+
+function Navbar() {
+  return (
+    <nav>
+      <Link to="/">Home</Link>
+      <Link to="/about">About</Link>
+      <Link to="/contact">Contact</Link>
+    </nav>
+  );
+}
+```
+
+📌 Avoid `<a>` tag
+📌 Use `<Link>` for SPA navigation
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Navigation using useNavigate
+
+```jsx
+import { useNavigate } from "react-router-dom";
+
+function Login() {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/dashboard");
+  };
+
+  return <button onClick={handleLogin}>Login</button>;
+}
+```
+
+📌 Used for programmatic navigation
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Dynamic Routing (Very Important ⭐)
+
+Dynamic routes use URL parameters.
+
+```jsx
+<Route path="/user/:id" element={<User />} />
+```
+
+Access parameter:
+
+```jsx
+import { useParams } from "react-router-dom";
+
+function User() {
+  const { id } = useParams();
+  return <h2>User ID: {id}</h2>;
+}
+```
+
+📌 Useful for:
+
+* Product pages
+* User profiles
+* Blog posts
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Nested Routes
+
+```jsx
+<Route path="/dashboard" element={<Dashboard />}>
+  <Route path="profile" element={<Profile />} />
+  <Route path="settings" element={<Settings />} />
+</Route>
+```
+
+📌 Use `<Outlet />` inside parent component.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 404 Page (Not Found)
+
+```jsx
+<Route path="*" element={<NotFound />} />
+```
+
+📌 Handles invalid routes
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 React Router Components Summary
+
+| Component     | Purpose                 |
+| ------------- | ----------------------- |
+| BrowserRouter | Wrap entire app         |
+| Routes        | Group routes            |
+| Route         | Define route            |
+| Link          | Navigation              |
+| useNavigate   | Programmatic navigation |
+| useParams     | Access URL params       |
+| Outlet        | Nested routes           |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 SPA (Single Page Application)
+
+In SPA:
+
+* Page doesn’t reload
+* Only components change
+* Faster experience
+* Better UX
+
+React Router helps build SPA.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Mistakes
+
+❌ Using `<a>` instead of `<Link>`
+❌ Forgetting BrowserRouter
+❌ Wrong path syntax
+❌ Not handling 404 page
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Keep routes organized
+✔ Use separate route files
+✔ Use layout components
+✔ Handle 404 page
+✔ Use dynamic routing properly
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Use Cases
+
+* Multi-page portfolio
+* Dashboard apps
+* E-commerce websites
+* Blog applications
+* Admin panels
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 Suggested Folder Structure
+
+```
+React/
+│
+├── pages/
+│   ├── Home.jsx
+│   ├── About.jsx
+│   ├── Contact.jsx
+│   ├── Dashboard.jsx
+│   └── NotFound.jsx
+│
+├── components/
+│   └── Navbar.jsx
+│
+├── Week-6-Day-3-React-Router-Navigation-Routing.md
+├── App.jsx
+└── main.jsx
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-3 Summary (Week-6)
+
+* What routing is
+* Installing React Router
+* BrowserRouter setup
+* Routes & Route
+* Link & useNavigate
+* Dynamic routes
+* Nested routes
+* 404 page
