@@ -1,0 +1,283 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 6 – DAY 4 React | State Management with Redux
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 4
+
+✔ Understand **why Redux is needed**
+✔ Learn **Redux core concepts**
+✔ Understand Store, Actions, Reducers
+✔ Connect Redux with React
+✔ Manage global state professionally
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Why Do We Need Redux?
+
+In large apps:
+
+* Many components need shared state
+* Prop drilling becomes messy
+* Context API becomes complex
+
+Redux solves this by:
+✔ Centralizing state
+✔ Making state predictable
+✔ Managing complex apps
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 What is Redux?
+
+Redux is a **state management library** used to manage global state in React apps.
+
+📌 Works with React
+📌 Follows predictable data flow
+📌 Uses single store
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Redux Data Flow (Very Important ⭐)
+
+Redux follows **Unidirectional Data Flow**:
+
+```
+Component → Action → Reducer → Store → Component
+```
+
+1️⃣ User triggers action
+2️⃣ Action sent to reducer
+3️⃣ Reducer updates store
+4️⃣ Store updates UI
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 Core Concepts of Redux
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1️⃣ Store
+
+Store holds the **entire application state**.
+
+```js
+const store = createStore(reducer);
+```
+
+📌 Single source of truth
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2️⃣ Action
+
+An action is a **plain JavaScript object**.
+
+```js
+{
+  type: "INCREMENT"
+}
+```
+
+📌 Must have `type`
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3️⃣ Reducer
+
+Reducer decides **how state changes**.
+
+```js
+function counterReducer(state = { count: 0 }, action) {
+  switch (action.type) {
+    case "INCREMENT":
+      return { count: state.count + 1 };
+    default:
+      return state;
+  }
+}
+```
+
+📌 Pure function
+📌 No direct state mutation
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Setting Up Redux in React
+
+Step 1: Install Redux Toolkit (Recommended ⭐)
+
+```bash
+npm install @reduxjs/toolkit react-redux
+```
+
+📌 Redux Toolkit simplifies Redux
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Create Slice (Modern Redux Way)
+
+```js
+import { createSlice } from "@reduxjs/toolkit";
+
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: { value: 0 },
+  reducers: {
+    increment: (state) => {
+      state.value += 1;
+    },
+    decrement: (state) => {
+      state.value -= 1;
+    }
+  }
+});
+
+export const { increment, decrement } = counterSlice.actions;
+export default counterSlice.reducer;
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Configure Store
+
+```js
+import { configureStore } from "@reduxjs/toolkit";
+import counterReducer from "./counterSlice";
+
+export const store = configureStore({
+  reducer: {
+    counter: counterReducer
+  }
+});
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Provide Store to App
+
+```jsx
+import { Provider } from "react-redux";
+import { store } from "./store";
+
+<Provider store={store}>
+  <App />
+</Provider>
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Using Redux in Component
+
+```jsx
+import { useSelector, useDispatch } from "react-redux";
+import { increment } from "./counterSlice";
+
+function Counter() {
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
+
+  return (
+    <button onClick={() => dispatch(increment())}>
+      {count}
+    </button>
+  );
+}
+```
+
+📌 `useSelector` → Get state
+📌 `useDispatch` → Send action
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🆚 Redux vs Context API
+
+| Context API         | Redux                    |
+| ------------------- | ------------------------ |
+| Built-in            | External library         |
+| Small-medium apps   | Large apps               |
+| Less boilerplate    | More structured          |
+| Simple global state | Complex state management |
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 When to Use Redux?
+
+✔ Large apps
+✔ Complex state logic
+✔ Many shared states
+✔ Debugging with DevTools
+✔ Team-based projects
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Redux DevTools
+
+Helps:
+
+* Debug state
+* Track actions
+* Time travel debugging
+
+📌 Very powerful for development
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Redux Mistakes
+
+❌ Mutating state directly
+❌ Too many global states
+❌ Overusing Redux
+❌ Complex reducers
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Use Redux Toolkit
+✔ Keep state normalized
+✔ Use slices
+✔ Avoid over-complication
+✔ Separate feature folders
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Examples
+
+* Shopping cart system
+* Authentication system
+* Dashboard analytics
+* Notification system
+* Large enterprise apps
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 Suggested Folder Structure
+
+```
+React/
+│
+├── app/
+│   └── store.js
+│
+├── features/
+│   └── counter/
+│       ├── counterSlice.js
+│       └── Counter.jsx
+│
+├── Week-6-Day-4-State-Management-with-Redux.md
+├── App.jsx
+└── main.jsx
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-4 Summary (Week-6)
+
+* Why Redux is needed
+* Redux core concepts
+* Store, Actions, Reducers
+* Redux Toolkit
+* Connecting Redux to React
+* Best practices
