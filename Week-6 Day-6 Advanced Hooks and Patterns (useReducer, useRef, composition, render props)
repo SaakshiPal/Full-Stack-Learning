@@ -1,0 +1,293 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 6 – DAY 6 React | Advanced Hooks & Patterns
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 6
+
+✔ Master **useReducer**
+✔ Understand **useRef deeply**
+✔ Learn **Component Composition**
+✔ Understand **Render Props pattern**
+✔ Write scalable & clean React code
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 1️⃣ useReducer Hook
+
+🧠 What is useReducer?
+
+`useReducer` is used for:
+
+* Complex state logic
+* Multiple related state values
+* State transitions
+
+📌 Alternative to `useState`
+📌 Inspired by Redux
+
+---
+
+🧾 Syntax
+
+```jsx
+const [state, dispatch] = useReducer(reducer, initialState);
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧩 Example: Counter using useReducer
+
+```jsx
+import { useReducer } from "react";
+
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      <h2>{state.count}</h2>
+      <button onClick={() => dispatch({ type: "increment" })}>
+        +
+      </button>
+      <button onClick={() => dispatch({ type: "decrement" })}>
+        -
+      </button>
+    </div>
+  );
+}
+```
+
+📌 Cleaner for complex updates
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🆚 useState vs useReducer
+
+| useState         | useReducer       |
+| ---------------- | ---------------- |
+| Simple state     | Complex state    |
+| Less boilerplate | Structured logic |
+| Small components | Large logic      |
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 2️⃣ useRef Hook (Deep Dive)
+
+🧠 What is useRef?
+
+`useRef` is used to:
+
+* Access DOM elements
+* Store values without re-rendering
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧾 Example: Focus Input
+
+```jsx
+import { useRef } from "react";
+
+function InputFocus() {
+  const inputRef = useRef();
+
+  const handleClick = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <input ref={inputRef} />
+      <button onClick={handleClick}>Focus</button>
+    </div>
+  );
+}
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Store Mutable Value (Without Re-render)
+
+```jsx
+const countRef = useRef(0);
+
+countRef.current += 1;
+```
+
+📌 Updating ref does NOT re-render
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 3️⃣ Component Composition Pattern
+
+🧠 What is Composition?
+
+Instead of inheritance, React uses **composition**.
+
+📌 Build complex UI using smaller components
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧾 Example
+
+```jsx
+function Card({ children }) {
+  return <div className="card">{children}</div>;
+}
+
+function App() {
+  return (
+    <Card>
+      <h2>Title</h2>
+      <p>Description</p>
+    </Card>
+  );
+}
+```
+
+📌 `children` allows flexible UI
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Passing Components as Props
+
+```jsx
+function Layout({ header, content }) {
+  return (
+    <div>
+      <header>{header}</header>
+      <main>{content}</main>
+    </div>
+  );
+}
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 4️⃣ Render Props Pattern
+
+🧠 What is Render Props?
+
+A pattern where:
+
+* A component receives a function as a prop
+* That function returns JSX
+
+📌 Used for logic sharing
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧾 Example
+
+```jsx
+function MouseTracker({ render }) {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  return (
+    <div
+      onMouseMove={(e) =>
+        setPosition({ x: e.clientX, y: e.clientY })
+      }
+    >
+      {render(position)}
+    </div>
+  );
+}
+```
+
+Usage:
+
+```jsx
+<MouseTracker
+  render={({ x, y }) => (
+    <h2>
+      X: {x}, Y: {y}
+    </h2>
+  )}
+/>
+```
+
+📌 Flexible & reusable
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Composition vs Render Props
+
+| Composition     | Render Props           |
+| --------------- | ---------------------- |
+| Uses children   | Uses function as prop  |
+| Simple pattern  | More flexible          |
+| Clean structure | Powerful logic sharing |
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Mistakes
+
+❌ Overusing useReducer
+❌ Using ref instead of state
+❌ Overcomplicating render props
+❌ Not separating logic properly
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Use useReducer for complex logic
+✔ Use ref only when necessary
+✔ Prefer composition over inheritance
+✔ Use custom hooks instead of render props (modern way)
+✔ Keep components reusable
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Use Cases
+
+* Complex forms (useReducer)
+* Modal focus handling (useRef)
+* Dashboard layouts (composition)
+* Mouse tracking / reusable logic (render props)
+* Drag & drop systems
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 Suggested Folder Structure
+
+```
+React/
+│
+├── hooks/
+│   ├── useReducerExample.jsx
+│   └── useRefExample.jsx
+│
+├── components/
+│   ├── Card.jsx
+│   └── MouseTracker.jsx
+│
+├── Week-6-Day-6-Advanced-Hooks-and-Patterns.md
+├── App.jsx
+└── main.jsx
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-6 Summary (Week-6)
+
+* useReducer deep dive
+* useRef deep dive
+* Composition pattern
+* Render props pattern
+* Best practices
