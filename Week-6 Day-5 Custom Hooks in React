@@ -1,0 +1,253 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 6 – DAY 5 React | Custom Hooks
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 5
+
+✔ Understand **what Custom Hooks are**
+✔ Learn **why we create them**
+✔ Reuse logic across components
+✔ Write clean & scalable React code
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is a Custom Hook?
+
+A **Custom Hook** is a **JavaScript function** that:
+
+* Starts with `use`
+* Uses other hooks inside it
+* Allows reuse of logic
+* Makes components cleaner
+
+📌 Custom Hook = Reusable Logic
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Why Do We Need Custom Hooks?
+
+Without custom hooks:
+
+* Code duplication
+* Repeated useEffect logic
+* Repeated state logic
+* Hard to maintain
+
+Custom hooks:
+✔ Keep components clean
+✔ Reuse logic
+✔ Improve readability
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Basic Custom Hook Example
+
+useCounter Hook
+
+```jsx
+import { useState } from "react";
+
+function useCounter(initialValue = 0) {
+  const [count, setCount] = useState(initialValue);
+
+  const increment = () => setCount(prev => prev + 1);
+  const decrement = () => setCount(prev => prev - 1);
+
+  return { count, increment, decrement };
+}
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Using Custom Hook
+
+```jsx
+function Counter() {
+  const { count, increment, decrement } = useCounter(0);
+
+  return (
+    <div>
+      <h2>{count}</h2>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+    </div>
+  );
+}
+```
+
+📌 Logic separated
+📌 Clean component
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Custom Hook with useEffect
+
+useFetch Hook (API Example)
+
+```jsx
+import { useState, useEffect } from "react";
+
+function useFetch(url) {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => setData(data));
+  }, [url]);
+
+  return data;
+}
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Using useFetch
+
+```jsx
+function Users() {
+  const data = useFetch("https://jsonplaceholder.typicode.com/users");
+
+  return (
+    <div>
+      {data && data.map(user => (
+        <p key={user.id}>{user.name}</p>
+      ))}
+    </div>
+  );
+}
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Custom Hook Naming Rule
+
+✔ Must start with `use`
+✔ Example:
+
+* useCounter
+* useFetch
+* useAuth
+* useTheme
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Custom Hook for Form Handling
+
+```jsx
+function useForm(initialValues) {
+  const [values, setValues] = useState(initialValues);
+
+  const handleChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  return { values, handleChange };
+}
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Custom Hook for Window Size
+
+```jsx
+function useWindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return width;
+}
+```
+
+📌 Good example of reusable logic
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Rules of Custom Hooks
+
+✔ Follow Rules of Hooks
+✔ Use only inside React components
+✔ Don’t call inside loops/conditions
+✔ Start with `use`
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🆚 Custom Hooks vs Normal Functions
+
+| Normal Function | Custom Hook       |
+| --------------- | ----------------- |
+| No state        | Can use hooks     |
+| Just utility    | Can manage state  |
+| No lifecycle    | Can use useEffect |
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Mistakes
+
+❌ Forgetting `use` prefix
+❌ Not returning needed values
+❌ Breaking hook rules
+❌ Overcomplicating logic
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Keep hooks small
+✔ One responsibility per hook
+✔ Reuse logic only
+✔ Avoid side effects without cleanup
+✔ Keep naming meaningful
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Use Cases
+
+* API fetching
+* Form handling
+* Authentication logic
+* Dark mode toggle
+* Window resize detection
+* Debouncing input
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 Suggested Folder Structure
+
+```
+React/
+│
+├── hooks/
+│   ├── useCounter.js
+│   ├── useFetch.js
+│   └── useForm.js
+│
+├── components/
+│   └── Counter.jsx
+│
+├── Week-6-Day-5-Custom-Hooks-in-React.md
+├── App.jsx
+└── main.jsx
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-5 Summary (Week-6)
+
+* What custom hooks are
+* Why we use them
+* Creating reusable logic
+* useState & useEffect inside hooks
+* Real-world examples
+* Best practices
