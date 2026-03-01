@@ -1,0 +1,258 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 7 – DAY 1 React | Error Boundaries & Debugging
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 1
+
+✔ Understand **what errors are in React**
+✔ Learn **Error Boundaries**
+✔ Handle runtime crashes
+✔ Use **React Developer Tools**
+✔ Debug like a professional
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Why Error Handling is Important?
+
+Without error handling:
+
+* App crashes completely ❌
+* White screen appears 😓
+* Poor user experience
+
+With proper handling:
+✔ App shows fallback UI
+✔ Better user experience
+✔ Easier debugging
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Types of Errors in React
+
+1️⃣ Syntax Errors
+2️⃣ Runtime Errors
+3️⃣ Network/API Errors
+4️⃣ Logic Errors
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 What is an Error Boundary?
+
+An **Error Boundary** is a React component that:
+
+* Catches JavaScript errors
+* Logs error
+* Displays fallback UI
+* Prevents whole app crash
+
+📌 Works only in **class components**
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧾 Creating an Error Boundary
+
+```jsx
+import React from "react";
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("Error caught:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h2>Something went wrong.</h2>;
+    }
+
+    return this.props.children;
+  }
+}
+
+export default ErrorBoundary;
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Using Error Boundary
+
+```jsx
+<ErrorBoundary>
+  <MyComponent />
+</ErrorBoundary>
+```
+
+📌 Wrap risky components
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ What Error Boundaries DO NOT Catch
+
+❌ Event handler errors
+❌ Async errors (setTimeout, API calls)
+❌ Server-side rendering errors
+
+For these → use try-catch
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Handling Errors in Functional Components
+
+Using try-catch
+
+```jsx
+try {
+  riskyFunction();
+} catch (error) {
+  console.error(error);
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Handling API Errors
+
+```jsx
+useEffect(() => {
+  fetch("https://api.example.com")
+    .then(res => res.json())
+    .catch(error => console.error(error));
+}, []);
+```
+
+Better:
+
+```jsx
+async function fetchData() {
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+  } catch (error) {
+    console.error("API Error:", error);
+  }
+}
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 React Developer Tools (Very Important ⭐)
+
+React DevTools help you:
+
+✔ Inspect components
+✔ Check props & state
+✔ Debug performance
+✔ View component tree
+
+Install from:
+
+* Chrome Extension Store
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Debugging with Console
+
+```jsx
+console.log(value);
+console.error(error);
+console.table(array);
+```
+
+📌 Basic but powerful
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Debugging with Breakpoints
+
+In Chrome DevTools:
+1️⃣ Open Sources tab
+2️⃣ Add breakpoint
+3️⃣ Inspect variables
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Common Debugging Techniques
+
+✔ Check error message carefully
+✔ Read stack trace
+✔ Isolate component
+✔ Remove recent changes
+✔ Use React DevTools
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Production Error Handling
+
+Use logging services like:
+
+* Sentry
+* LogRocket
+* Bugsnag
+
+📌 Used in enterprise apps
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Example
+
+```jsx
+function CrashComponent() {
+  throw new Error("App crashed!");
+}
+```
+
+Wrap with ErrorBoundary → App survives
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Mistakes
+
+❌ Ignoring console warnings
+❌ Not handling API errors
+❌ Overusing try-catch
+❌ Not testing edge cases
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Use Error Boundaries at top level
+✔ Handle API errors gracefully
+✔ Show user-friendly messages
+✔ Log errors for debugging
+✔ Use DevTools regularly
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 Suggested Folder Structure
+
+```
+React/
+│
+├── components/
+│   ├── ErrorBoundary.jsx
+│   ├── CrashComponent.jsx
+│
+├── Week-7-Day-1-Error-Boundaries-and-Debugging-in-React.md
+├── App.jsx
+└── main.jsx
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-1 Summary (Week-7)
+
+* Types of errors
+* What Error Boundaries are
+* Creating error boundaries
+* Handling API error
