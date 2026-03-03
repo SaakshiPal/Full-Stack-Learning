@@ -1,0 +1,268 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 7 – DAY 3 React | Testing (Unit Testing & Snapshot Testing)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 3
+
+✔ Understand **why testing is important**
+✔ Learn **Unit Testing in React**
+✔ Learn **Snapshot Testing**
+✔ Use **Jest & React Testing Library**
+✔ Write professional test cases
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Why Testing is Important?
+
+Without testing:
+
+❌ Bugs reach production
+❌ Features break easily
+❌ Hard to refactor code
+❌ Poor reliability
+
+With testing:
+
+✔ Catch bugs early
+✔ Improve code quality
+✔ Refactor safely
+✔ Build scalable apps
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Types of Testing in React
+
+1️⃣ Unit Testing
+2️⃣ Snapshot Testing
+3️⃣ Integration Testing
+4️⃣ End-to-End Testing
+
+Today focus: **Unit + Snapshot**
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 What is Unit Testing?
+
+Unit testing means:
+
+👉 Testing a single component or function independently.
+
+Example:
+
+* Test if button renders
+* Test if counter increments
+* Test if API call works
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Tools Used in React Testing
+
+✔ **Jest** → Test runner
+✔ **React Testing Library (RTL)** → Component testing
+✔ **Vitest** → Alternative to Jest
+✔ **Cypress** → E2E testing
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Installing Testing Libraries
+
+If using CRA → already installed
+
+For Vite:
+
+```bash
+npm install -D vitest @testing-library/react @testing-library/jest-dom
+```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Basic Unit Test Example
+
+Component:
+
+```jsx
+function Button() {
+  return <button>Click Me</button>;
+}
+```
+
+Test:
+
+```jsx
+import { render, screen } from "@testing-library/react";
+import Button from "./Button";
+
+test("renders button text", () => {
+  render(<Button />);
+  const buttonElement = screen.getByText("Click Me");
+  expect(buttonElement).toBeInTheDocument();
+});
+```
+
+✔ `render()` → Render component
+✔ `screen` → Query elements
+✔ `expect()` → Assertion
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Testing Button Click
+
+Component:
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      {count}
+    </button>
+  );
+}
+```
+
+Test:
+
+```jsx
+import { render, screen, fireEvent } from "@testing-library/react";
+
+test("increments counter", () => {
+  render(<Counter />);
+  
+  const button = screen.getByRole("button");
+  fireEvent.click(button);
+
+  expect(button.textContent).toBe("1");
+});
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Snapshot Testing
+
+Snapshot testing checks if UI changes unexpectedly.
+
+📌 Uses Jest
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Example Snapshot Test
+
+```jsx
+import renderer from "react-test-renderer";
+import Button from "./Button";
+
+test("matches snapshot", () => {
+  const tree = renderer.create(<Button />).toJSON();
+  expect(tree).toMatchSnapshot();
+});
+```
+
+📌 First time → snapshot file created
+📌 If UI changes → test fails
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 When to Use Snapshot Testing?
+
+✔ Small UI components
+✔ Static components
+✔ Prevent accidental UI changes
+
+❌ Avoid for large dynamic components
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Testing API Calls
+
+```jsx
+test("fetches data", async () => {
+  render(<FetchComponent />);
+  
+  const items = await screen.findByText("User Name");
+  expect(items).toBeInTheDocument();
+});
+```
+
+📌 Use async/await
+📌 Use `findBy` queries
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Best Queries in React Testing Library
+
+| Query          | Use            |
+| -------------- | -------------- |
+| getByText      | Find by text   |
+| getByRole      | Find by role   |
+| getByLabelText | Form inputs    |
+| findByText     | Async elements |
+
+📌 Prefer `getByRole` (best practice ⭐)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Good Testing Principles
+
+✔ Test behavior, not implementation
+✔ Test what user sees
+✔ Avoid testing internal state
+✔ Write small tests
+✔ Keep tests readable
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Testing Mistakes
+
+❌ Testing implementation details
+❌ Using too many snapshots
+❌ Ignoring accessibility
+❌ Over-mocking everything
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Example Folder Structure
+
+```
+React/
+│
+├── components/
+│   ├── Button.jsx
+│   ├── Button.test.jsx
+│
+├── Week-7-Day-3-Testing-in-React.md
+├── App.jsx
+└── main.jsx
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Benefits
+
+✔ Safer refactoring
+✔ Faster debugging
+✔ Cleaner architecture
+✔ Enterprise-level quality
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Interview Questions
+
+* Difference between unit & integration testing?
+* What is snapshot testing?
+* Why use React Testing Library over Enzyme?
+* How do you test async code?
+* How do you mock API calls?
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-3 Summary (Week-7)
+
+* Why testing is important
+* Unit testing basics
+* Snapshot testing
+* Testing user interactions
+* Async testing
+* Best practices
