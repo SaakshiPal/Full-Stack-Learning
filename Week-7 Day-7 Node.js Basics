@@ -1,0 +1,310 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 7 – DAY 7 Node.js Basics
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 7
+
+✔ Understand **Node.js core concepts**
+✔ Learn **modules and file system**
+✔ Handle **HTTP requests & responses**
+✔ Work with **NPM packages**
+✔ Prepare for **Express.js backend development**
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is Node.js?
+
+Node.js is a **JavaScript runtime environment** that allows developers to run JavaScript **on the server side**.
+
+Before Node.js:
+
+```text
+JavaScript → Browser only
+```
+
+After Node.js:
+
+```text
+JavaScript → Browser + Server
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Features of Node.js
+
+✔ Fast execution (V8 Engine)
+✔ Non-blocking I/O
+✔ Event-driven architecture
+✔ Single-threaded event loop
+✔ Huge npm ecosystem
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Node.js Event Loop
+
+Node.js uses an **event loop** to handle multiple requests efficiently.
+
+Flow:
+
+```text
+Client Request → Event Loop → Callback Queue → Response
+```
+
+This allows Node.js to process many requests without creating multiple threads.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Creating a Basic Node Server
+
+Create file:
+
+```text
+server.js
+```
+
+Code:
+
+```javascript
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+  res.write("Welcome to Node.js Server");
+  res.end();
+});
+
+server.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
+```
+
+Run:
+
+```bash
+node server.js
+```
+
+Visit:
+
+```text
+http://localhost:3000
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Node.js Core Modules
+
+Node.js provides built-in modules.
+
+Common modules:
+
+| Module | Purpose        |
+| ------ | -------------- |
+| http   | Create server  |
+| fs     | File system    |
+| path   | File paths     |
+| os     | System info    |
+| events | Event handling |
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 File System Module (fs)
+
+Used to read/write files.
+
+Example:
+
+```javascript
+const fs = require("fs");
+
+fs.writeFileSync("test.txt", "Hello Node.js");
+```
+
+Read file:
+
+```javascript
+const data = fs.readFileSync("test.txt", "utf8");
+console.log(data);
+```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Asynchronous vs Synchronous
+
+Synchronous
+
+```javascript
+fs.readFileSync("file.txt");
+```
+
+Blocks execution ❌
+
+Asynchronous
+
+```javascript
+fs.readFile("file.txt", (err, data) => {
+  console.log(data.toString());
+});
+```
+
+Non-blocking ✔
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Node.js Modules System
+
+Modules help organize code.
+
+Example:
+
+math.js
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+
+module.exports = add;
+```
+
+app.js
+
+```javascript
+const add = require("./math");
+
+console.log(add(5, 3));
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 NPM (Node Package Manager)
+
+NPM is used to install libraries.
+
+Initialize project:
+
+```bash
+npm init
+```
+
+Install package:
+
+```bash
+npm install express
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 package.json
+
+This file stores project information.
+
+Example:
+
+```json
+{
+  "name": "node-app",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Global vs Local Packages
+
+| Type   | Command                |
+| ------ | ---------------------- |
+| Local  | npm install package    |
+| Global | npm install -g package |
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Environment Variables
+
+Used to store sensitive data.
+
+Example `.env`:
+
+```
+PORT=3000
+API_KEY=123456
+```
+
+Access in Node:
+
+```javascript
+process.env.PORT
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Error Handling in Node.js
+
+Example:
+
+```javascript
+try {
+  const data = fs.readFileSync("file.txt");
+} catch (error) {
+  console.error(error);
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Basic API Example
+
+```javascript
+const http = require("http");
+
+http.createServer((req, res) => {
+  if (req.url === "/api") {
+    res.write(JSON.stringify({ message: "Hello API" }));
+  } else {
+    res.write("Home Page");
+  }
+  res.end();
+}).listen(3000);
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Node.js Applications
+
+Node.js is used for:
+
+✔ REST APIs
+✔ Real-time chat apps
+✔ Streaming services
+✔ Backend servers
+✔ Microservices
+
+Examples:
+
+* Netflix
+* Uber
+* LinkedIn
+* PayPal
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Beginner Mistakes
+
+❌ Blocking event loop
+❌ Not handling errors
+❌ Installing too many packages
+❌ Ignoring async behavior
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Use async/await
+✔ Organize modules properly
+✔ Use environment variables
+✔ Handle errors properly
+✔ Use Express framework for APIs
