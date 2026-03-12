@@ -1,0 +1,428 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 8 – DAY 1 Node.js Modules
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 1
+
+✔ Understand **what modules are in Node.js**
+✔ Learn **why modules are important**
+✔ Use **require() and module.exports**
+✔ Understand **CommonJS and ES Modules**
+✔ Organize backend code properly
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is a Module?
+
+A **module** is a reusable block of code that can be imported into other files.
+
+Example:
+
+Instead of writing everything in one file:
+
+```text
+app.js
+```
+
+We split code into modules:
+
+```text
+math.js
+user.js
+server.js
+```
+
+📌 This improves **code organization and reusability**.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Types of Modules in Node.js
+
+Node.js provides **three types of modules**.
+
+| Type                | Description                          |
+| ------------------- | ------------------------------------ |
+| Core Modules        | Built-in modules provided by Node.js |
+| Local Modules       | Custom modules created by developers |
+| Third-party Modules | Installed using npm                  |
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 1️⃣ Core Modules
+
+These modules come **pre-installed with Node.js**.
+
+Examples:
+
+* `http`
+* `fs`
+* `path`
+* `os`
+* `events`
+
+Example:
+
+```javascript
+const os = require("os");
+
+console.log(os.platform());
+```
+
+Output:
+
+```
+win32 / linux / darwin
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 2️⃣ Local Modules
+
+Local modules are **custom files created in the project**.
+
+Example structure:
+
+```text
+project/
+│
+├── math.js
+└── app.js
+```
+
+---
+
+math.js
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+
+module.exports = add;
+```
+
+---
+
+app.js
+
+```javascript
+const add = require("./math");
+
+console.log(add(5, 3));
+```
+
+Output:
+
+```
+8
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 module.exports vs exports
+
+Node.js provides two ways to export modules.
+
+Using module.exports
+
+```javascript
+module.exports = function greet() {
+  console.log("Hello");
+};
+```
+
+---
+
+Using exports
+
+```javascript
+exports.greet = function () {
+  console.log("Hello");
+};
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Export Multiple Functions
+
+Example:
+
+math.js
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+module.exports = { add, subtract };
+```
+
+---
+
+app.js
+
+```javascript
+const math = require("./math");
+
+console.log(math.add(5, 2));
+console.log(math.subtract(5, 2));
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 3️⃣ Third-Party Modules
+
+These modules are installed using **npm**.
+
+Example:
+
+```bash
+npm install express
+```
+
+Use module:
+
+```javascript
+const express = require("express");
+```
+
+Popular third-party modules:
+
+* Express
+* Lodash
+* Axios
+* Mongoose
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 CommonJS Module System
+
+Node.js traditionally uses **CommonJS modules**.
+
+Import:
+
+```javascript
+const module = require("module");
+```
+
+Export:
+
+```javascript
+module.exports = value;
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 ES Modules (Modern JavaScript)
+
+Modern Node.js supports **ES Modules**.
+
+Import:
+
+```javascript
+import express from "express";
+```
+
+Export:
+
+```javascript
+export default function greet() {
+  console.log("Hello");
+}
+```
+
+Enable ES Modules:
+
+Add to `package.json`:
+
+```json
+{
+  "type": "module"
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 require() Function
+
+`require()` loads modules.
+
+Example:
+
+```javascript
+const fs = require("fs");
+```
+
+Node.js searches in:
+
+1️⃣ Core modules
+2️⃣ Local files
+3️⃣ node_modules folder
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Module Wrapper
+
+Node.js wraps modules inside a function.
+
+Example:
+
+```javascript
+(function (exports, require, module, __filename, __dirname) {
+  // module code
+});
+```
+
+Useful variables:
+
+| Variable   | Description    |
+| ---------- | -------------- |
+| __dirname  | Directory path |
+| __filename | File path      |
+
+Example:
+
+```javascript
+console.log(__dirname);
+console.log(__filename);
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Example Project Using Modules
+
+Project structure:
+
+```text
+NodeModules/
+│
+├── math.js
+├── user.js
+├── server.js
+└── package.json
+```
+
+Example:
+
+```javascript
+// user.js
+function getUser() {
+  return "John";
+}
+
+module.exports = getUser;
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Benefits of Modules
+
+✔ Code reusability
+✔ Better organization
+✔ Easier maintenance
+✔ Scalable backend architecture
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Beginner Mistakes
+
+❌ Wrong file path in require()
+❌ Forgetting module.exports
+❌ Mixing CommonJS and ES modules incorrectly
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Split code into small modules
+✔ Use meaningful file names
+✔ Keep modules reusable
+✔ Follow proper folder structure
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 Example Backend Folder Structure
+
+```text
+backend/
+│
+├── controllers/
+│   └── userController.js
+│
+├── routes/
+│   └── userRoutes.js
+│
+├── models/
+│   └── userModel.js
+│
+├── server.js
+└── package.json
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Use Case
+
+Example backend:
+
+```text
+React Frontend
+        ↓
+Node.js Server
+        ↓
+Database
+```
+
+Modules help separate:
+
+* Routes
+* Controllers
+* Services
+* Database logic
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🏷️ Suggested GitHub Topics
+
+```
+nodejs
+modules
+backend
+javascript
+web-development
+learning
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📢 Suggested LinkedIn Post
+
+🚀 Learning **Node.js Modules**
+
+Today I learned:
+
+✔ Core modules
+✔ Local modules
+✔ Third-party modules
+✔ require() and module.exports
+
+Understanding modules is the **foundation of backend development**.
+
+#NodeJS #Backend #WebDevelopment #JavaScript #FullStack
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-1 Summary (Week-8)
+
+* What modules are
+* Types of Node.js modules
+* Core modules
+* Local modules
+* Third-party modules
+* CommonJS vs ES Modules
