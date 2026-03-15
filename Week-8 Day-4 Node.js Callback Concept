@@ -1,0 +1,304 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 8 – DAY 4 Node.js Callback Concept
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 4
+
+✔ Understand **what callbacks are**
+✔ Learn **how callbacks work in Node.js**
+✔ Understand **asynchronous programming**
+✔ Avoid **callback hell**
+✔ Prepare for **Promises and Async/Await**
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is a Callback Function?
+
+A **callback function** is a function that is **passed as an argument to another function** and is executed later.
+
+Example idea:
+
+```text
+Function → Performs task → Calls callback
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Simple Callback Example
+
+```javascript
+function greet(name, callback) {
+  console.log("Hello " + name);
+  callback();
+}
+
+function sayBye() {
+  console.log("Goodbye!");
+}
+
+greet("Saakshi", sayBye);
+```
+
+Output:
+
+```text
+Hello Saakshi
+Goodbye!
+```
+
+Explanation:
+
+1️⃣ greet function runs
+2️⃣ callback function executes after
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Why Node.js Uses Callbacks
+
+Node.js is **asynchronous and non-blocking**.
+
+Callbacks allow:
+
+✔ Efficient I/O operations
+✔ Handling tasks after completion
+✔ Running multiple operations simultaneously
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Callback in File Reading
+
+Example using `fs` module:
+
+```javascript
+const fs = require("fs");
+
+fs.readFile("file.txt", "utf8", (err, data) => {
+
+  if (err) {
+    console.error(err);
+    return;
+  }
+
+  console.log(data);
+});
+```
+
+Explanation:
+
+1️⃣ File reading starts
+2️⃣ Node continues executing other code
+3️⃣ Callback runs when file reading finishes
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Callback Flow in Node.js
+
+Execution flow:
+
+```text
+Start Task → Continue Program → Task Finished → Callback Executes
+```
+
+This keeps the **event loop free**.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Example with Timeout
+
+```javascript
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Callback executed");
+}, 2000);
+
+console.log("End");
+```
+
+Output:
+
+```text
+Start
+End
+Callback executed
+```
+
+Explanation:
+
+Node.js does **not wait** for the timeout.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Error-First Callback Pattern
+
+Node.js follows a standard callback pattern:
+
+```javascript
+function callback(error, result) {
+}
+```
+
+Example:
+
+```javascript
+fs.readFile("file.txt", (err, data) => {
+
+  if (err) {
+    console.log("Error:", err);
+    return;
+  }
+
+  console.log(data);
+});
+```
+
+Rule:
+
+```text
+First parameter → error
+Second parameter → result
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Callback Hell
+
+When callbacks are nested too deeply, code becomes hard to read.
+
+Example:
+
+```javascript
+fs.readFile("file1.txt", (err, data1) => {
+
+  fs.readFile("file2.txt", (err, data2) => {
+
+    fs.readFile("file3.txt", (err, data3) => {
+
+      console.log(data1, data2, data3);
+
+    });
+
+  });
+
+});
+```
+
+This is called **Callback Hell**.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Problems with Callback Hell
+
+❌ Hard to read
+❌ Hard to debug
+❌ Difficult error handling
+❌ Deep nesting
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Solutions to Callback Hell
+
+Modern JavaScript provides better solutions.
+
+1️⃣ Promises
+2️⃣ Async/Await
+
+Example with Promise:
+
+```javascript
+fs.promises.readFile("file.txt", "utf8")
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
+```
+
+Example with async/await:
+
+```javascript
+async function readFile() {
+  const data = await fs.promises.readFile("file.txt", "utf8");
+  console.log(data);
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Callback vs Promise vs Async/Await
+
+| Feature        | Callback  | Promise | Async/Await |
+| -------------- | --------- | ------- | ----------- |
+| Syntax         | Complex   | Better  | Clean       |
+| Error Handling | Difficult | Easier  | Very easy   |
+| Readability    | Poor      | Good    | Best        |
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 When Callbacks Are Still Used
+
+Callbacks are still used in:
+
+✔ Event handling
+✔ Node.js APIs
+✔ Streams
+✔ Some legacy libraries
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Beginner Mistakes
+
+❌ Forgetting error handling
+❌ Deep nesting
+❌ Not understanding async behavior
+❌ Mixing sync and async code
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Keep callbacks small
+✔ Handle errors properly
+✔ Avoid deep nesting
+✔ Use async/await for complex tasks
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 Example Project Structure
+
+```text
+NodeCallbacks/
+│
+├── readFile.js
+├── asyncTask.js
+├── utils/
+│   └── helper.js
+└── package.json
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Example
+
+Example backend task:
+
+```text
+User Request
+     ↓
+Read Database
+     ↓
+Process Data
+     ↓
+Send Response
+```
+
+Each step can use **callbacks**.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-4 Summary (Week-8)
+
+* What callbacks are
+* Why Node.js uses callbacks
+* Error-first callback pattern
+* Callback hell problem
+* Promises and async/await solutions
