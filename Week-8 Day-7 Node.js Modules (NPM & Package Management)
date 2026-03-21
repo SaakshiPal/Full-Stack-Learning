@@ -1,0 +1,363 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 8 – DAY 7 📦 Node.js Modules (NPM & Package Management)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 7
+
+✔ Understand **what NPM is**
+✔ Learn **how to manage packages**
+✔ Understand `package.json`
+✔ Install & use libraries
+✔ Manage dependencies professionally
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is NPM?
+
+**NPM (Node Package Manager)** is:
+
+👉 A tool to install and manage JavaScript packages
+
+📌 Comes with Node.js
+📌 Largest package ecosystem
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Why NPM is Important?
+
+✔ Reuse existing code
+✔ Save development time
+✔ Access thousands of libraries
+✔ Build scalable applications
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Initialize a Project
+
+```bash
+npm init
+```
+
+OR quick:
+
+```bash
+npm init -y
+```
+
+This creates:
+
+```text
+package.json
+```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 What is package.json?
+
+It is the **heart of a Node.js project**.
+
+Stores:
+
+✔ Project details
+✔ Dependencies
+✔ Scripts
+✔ Version info
+
+---
+
+Example package.json
+
+```json
+{
+  "name": "node-project",
+  "version": "1.0.0",
+  "description": "My Node app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Installing Packages
+
+Install package
+
+```bash
+npm install express
+```
+
+OR:
+
+```bash
+npm i express
+```
+
+---
+
+Install specific version
+
+```bash
+npm install express@4.18.2
+```
+
+---
+
+🔷 node_modules Folder
+
+After installing packages:
+
+```text
+node_modules/
+```
+
+Contains:
+
+✔ All installed packages
+✔ Dependencies of dependencies
+
+📌 Automatically created
+
+---
+
+🔷 package-lock.json
+
+This file:
+
+✔ Locks dependency versions
+✔ Ensures same installation across systems
+
+---
+
+🔷 Dependencies Types
+
+| Type            | Purpose                |
+| --------------- | ---------------------- |
+| dependencies    | Required in production |
+| devDependencies | Only for development   |
+
+---
+
+## Install dev dependency
+
+```bash
+npm install nodemon --save-dev
+```
+
+---
+
+🔷 Scripts in package.json
+
+```json
+"scripts": {
+  "start": "node app.js",
+  "dev": "nodemon app.js"
+}
+```
+
+Run:
+
+```bash
+npm run dev
+```
+
+---
+
+🔷 Global vs Local Packages
+
+| Type   | Command                |
+| ------ | ---------------------- |
+| Local  | npm install package    |
+| Global | npm install -g package |
+
+Example:
+
+```bash
+npm install -g nodemon
+```
+
+---
+
+🔷 Uninstall Package
+
+```bash
+npm uninstall express
+```
+
+---
+
+🔷 Update Package
+
+```bash
+npm update
+```
+
+---
+
+🔷 Popular NPM Packages
+
+| Package  | Use                   |
+| -------- | --------------------- |
+| express  | Web framework         |
+| axios    | HTTP requests         |
+| nodemon  | Auto-restart server   |
+| dotenv   | Environment variables |
+| mongoose | MongoDB ORM           |
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Semantic Versioning (SemVer)
+
+Format:
+
+```text
+MAJOR.MINOR.PATCH
+```
+
+Example:
+
+```text
+1.2.3
+```
+
+Meaning:
+
+* MAJOR → Breaking changes
+* MINOR → New features
+* PATCH → Bug fixes
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Version Symbols
+
+| Symbol | Meaning            |
+| ------ | ------------------ |
+| ^      | Compatible version |
+| ~      | Minor updates      |
+| *      | Any version        |
+
+---
+
+🔷 NPM vs NPX
+
+| npm              | npx          |
+| ---------------- | ------------ |
+| Installs package | Runs package |
+| Permanent        | Temporary    |
+
+Example:
+
+```bash
+npx create-react-app my-app
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Environment Variables
+
+Use `.env` file:
+
+```text
+PORT=3000
+API_KEY=12345
+```
+
+Install dotenv:
+
+```bash
+npm install dotenv
+```
+
+Use:
+
+```javascript
+require("dotenv").config();
+console.log(process.env.PORT);
+```
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
+
+🔷 Best Practices
+
+✔ Use `package.json` properly
+✔ Install only required packages
+✔ Use `.gitignore` for node_modules
+✔ Keep dependencies updated
+✔ Use environment variables
+
+---
+
+⚠️ Common Mistakes
+
+❌ Installing unnecessary packages
+❌ Not using package-lock.json
+❌ Committing node_modules
+❌ Ignoring version conflicts
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📂 Example Project Structure
+
+```text
+NodeNPM/
+│
+├── app.js
+├── package.json
+├── package-lock.json
+├── node_modules/
+└── .env
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Use Case
+
+Full stack app:
+
+```text
+React Frontend
+        ↓
+Node.js Backend (Express)
+        ↓
+Database (MongoDB)
+```
+
+NPM helps manage:
+
+✔ Backend libraries
+✔ Middleware
+✔ Database tools
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📢 Suggested LinkedIn Post
+
+🚀 Learning **Node.js NPM & Package Management**
+
+Today I explored:
+
+✔ package.json
+✔ Installing packages
+✔ Dependency management
+✔ Scripts & versioning
+
+NPM makes development faster and scalable 📦
+
+#NodeJS #NPM #Backend #WebDevelopment #JavaScript
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-7 Summary (Week-8)
+
+* What NPM is
+* package.json & package-lock.json
+* Installing & managing packages
+* Dependency types
+* Scripts & versioning
