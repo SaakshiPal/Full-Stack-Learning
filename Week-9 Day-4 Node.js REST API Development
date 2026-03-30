@@ -1,0 +1,294 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 9 – DAY 4 🌐 Node.js REST API Development
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 4
+
+✔ Understand **what REST API is**
+✔ Learn **CRUD operations**
+✔ Build APIs using Express
+✔ Handle requests & responses
+✔ Structure backend properly
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is a REST API?
+
+A **REST API (Representational State Transfer)** is a way for:
+
+👉 Client (frontend) to communicate with server (backend)
+
+Example:
+
+```text
+React App → API → Database → Response
+```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 HTTP Methods in REST API
+
+| Method | Purpose     |
+| ------ | ----------- |
+| GET    | Fetch data  |
+| POST   | Create data |
+| PUT    | Update data |
+| DELETE | Remove data |
+
+---
+
+🔷 Example API Endpoints
+
+```text
+GET     /users
+GET     /users/:id
+POST    /users
+PUT     /users/:id
+DELETE  /users/:id
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Setup Express Server
+
+```javascript
+const express = require("express");
+const app = express();
+
+app.use(express.json());
+
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
+```
+
+---
+
+🔷 Sample Data
+
+```javascript
+let users = [
+  { id: 1, name: "John" },
+  { id: 2, name: "Sara" }
+];
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 GET All Users
+
+```javascript
+app.get("/users", (req, res) => {
+  res.json(users);
+});
+```
+
+---
+
+🔷 GET Single User
+
+```javascript
+app.get("/users/:id", (req, res) => {
+  const user = users.find(u => u.id == req.params.id);
+  res.json(user);
+});
+```
+
+---
+
+🔷 POST (Create User)
+
+```javascript
+app.post("/users", (req, res) => {
+  const newUser = {
+    id: users.length + 1,
+    name: req.body.name
+  };
+
+  users.push(newUser);
+  res.json(newUser);
+});
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 PUT (Update User)
+
+```javascript
+app.put("/users/:id", (req, res) => {
+  const user = users.find(u => u.id == req.params.id);
+
+  if (user) {
+    user.name = req.body.name;
+    res.json(user);
+  } else {
+    res.status(404).send("User not found");
+  }
+});
+```
+
+---
+
+🔷 DELETE User
+
+```javascript
+app.delete("/users/:id", (req, res) => {
+  users = users.filter(u => u.id != req.params.id);
+  res.send("User deleted");
+});
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Status Codes
+
+| Code | Meaning      |
+| ---- | ------------ |
+| 200  | Success      |
+| 201  | Created      |
+| 400  | Bad Request  |
+| 404  | Not Found    |
+| 500  | Server Error |
+
+Example:
+
+```javascript
+res.status(201).json(newUser);
+```
+
+---
+
+🔷 Middleware in API
+
+```javascript
+app.use((req, res, next) => {
+  console.log(req.method, req.url);
+  next();
+});
+```
+
+✔ Logs requests
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Error Handling
+
+```javascript
+app.get("/error", (req, res) => {
+  try {
+    throw new Error("Something went wrong");
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+```
+
+---
+
+🔷 API Testing Tools
+
+✔ Postman
+✔ Thunder Client (VS Code)
+✔ Browser (GET requests)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Project Structure (Professional ⭐)
+
+```text
+Backend/
+│
+├── server.js
+├── routes/
+│   └── userRoutes.js
+├── controllers/
+│   └── userController.js
+├── models/
+│   └── userModel.js
+└── package.json
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Real-World Flow
+
+```text
+Frontend (React)
+        ↓
+API (Node + Express)
+        ↓
+Database (MongoDB)
+        ↓
+Response (JSON)
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Mistakes
+
+❌ Not validating data
+❌ Not handling errors
+❌ Hardcoding data
+❌ Ignoring status codes
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Use proper HTTP methods
+✔ Use status codes correctly
+✔ Validate input data
+✔ Separate routes & controllers
+✔ Keep API RESTful
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Use Cases
+
+✔ E-commerce APIs
+✔ Authentication systems
+✔ Social media apps
+✔ Dashboard backends
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🏷️ Suggested GitHub Topics
+
+```text
+nodejs
+express
+rest-api
+backend
+javascript
+web-development
+learning
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📢 Suggested LinkedIn Post
+
+🚀 Built my first **REST API using Node.js & Express**
+
+Today I learned:
+
+✔ CRUD operations
+✔ API endpoints
+✔ Middleware
+✔ Status codes
+
+Excited to build full backend systems 🔥
+
+#NodeJS #ExpressJS #API #Backend #WebDevelopment
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-4 Summary (Week-9)
+
+* What REST API is
+* HTTP methods
+* CRUD operations
+* Express API creation
+* Middleware & error handling
