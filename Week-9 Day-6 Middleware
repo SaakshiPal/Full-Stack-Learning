@@ -1,0 +1,279 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 9 – DAY 6 🔗 Middleware in Node.js & Express
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 6
+
+✔ Understand **what middleware is**
+✔ Learn **how middleware works**
+✔ Use **built-in & custom middleware**
+✔ Understand **next() function**
+✔ Build secure and scalable APIs
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is Middleware?
+
+Middleware is a function that:
+
+👉 Runs **between request and response**
+
+Flow:
+
+```text id="6xk7m3"
+Request → Middleware → Response
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Why Middleware is Important?
+
+✔ Modify request/response
+✔ Handle authentication
+✔ Logging
+✔ Error handling
+✔ Data validation
+
+---
+
+🔷 Basic Middleware Example
+
+```javascript id="b1v9x3"
+app.use((req, res, next) => {
+  console.log("Middleware executed");
+  next();
+});
+```
+
+📌 `next()` → moves to next step
+
+---
+
+🔷 Middleware Flow
+
+```text id="o7p2k1"
+Client Request
+     ↓
+Middleware 1
+     ↓
+Middleware 2
+     ↓
+Route Handler
+     ↓
+Response
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Types of Middleware
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1️⃣ Application-Level Middleware
+
+```javascript id="c2k8m4"
+app.use((req, res, next) => {
+  console.log("App-level middleware");
+  next();
+});
+```
+
+---
+
+2️⃣ Router-Level Middleware
+
+```javascript id="d9m3v1"
+const router = express.Router();
+
+router.use((req, res, next) => {
+  console.log("Router middleware");
+  next();
+});
+```
+
+---
+
+3️⃣ Built-in Middleware
+
+```javascript id="e7k2r9"
+app.use(express.json());
+```
+
+✔ Parses JSON
+
+---
+
+4️⃣ Third-Party Middleware
+
+Examples:
+
+* **morgan** → logging
+* **cors** → cross-origin requests
+* **helmet** → security
+
+Install:
+
+```bash id="f8n4s2"
+npm install morgan cors helmet
+```
+
+---
+
+5️⃣ Error-Handling Middleware
+
+```javascript id="g3p7k8"
+app.use((err, req, res, next) => {
+  res.status(500).send(err.message);
+});
+```
+
+📌 Must have 4 parameters
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 next() Function
+
+`next()` is very important.
+
+✔ Pass control to next middleware
+
+---
+
+### Without next()
+
+```javascript id="h6r2m5"
+app.use((req, res, next) => {
+  console.log("Stops here");
+});
+```
+
+❌ Request gets stuck
+
+---
+
+With next()
+
+```javascript id="i5k9p3"
+app.use((req, res, next) => {
+  console.log("Continue");
+  next();
+});
+```
+
+✔ Works properly
+
+---
+
+🔷 Example: Logger Middleware
+
+```javascript id="j4n8k1"
+app.use((req, res, next) => {
+  console.log(req.method, req.url);
+  next();
+});
+```
+
+---
+
+🔷 Example: Authentication Middleware
+
+```javascript id="k9r2p6"
+function auth(req, res, next) {
+  if (req.headers.authorization) {
+    next();
+  } else {
+    res.status(401).send("Unauthorized");
+  }
+}
+
+app.use(auth);
+```
+
+---
+
+🔷 Middleware Order Matters
+
+```javascript id="l7m1p8"
+app.use(middleware1);
+app.use(middleware2);
+```
+
+📌 Executes in same order
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Route-Specific Middleware
+
+```javascript id="m3k9p4"
+app.get("/protected", auth, (req, res) => {
+  res.send("Protected route");
+});
+```
+
+---
+
+🔷 Real-World Middleware Use Cases
+
+✔ Authentication (JWT)
+✔ Logging requests
+✔ Input validation
+✔ Error handling
+✔ Security
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Mistakes
+
+❌ Forgetting `next()`
+❌ Wrong middleware order
+❌ Not handling errors
+❌ Overusing middleware
+
+---
+
+💡 Best Practices
+
+✔ Keep middleware small
+✔ Use reusable functions
+✔ Use third-party middleware
+✔ Handle errors properly
+✔ Order middleware correctly
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Real-World Flow
+
+```text id="p8k4m6"
+Request
+  ↓
+Logger Middleware
+  ↓
+Auth Middleware
+  ↓
+Route Handler
+  ↓
+Response
+```
+
+---
+
+🧠 Real-World Example
+
+E-commerce API:
+
+```text id="q2m7k5"
+User Request → Auth Middleware → Payment Route → Response
+```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-6 Summary (Week-9)
+
+* What middleware is
+* Types of middleware
+* next() function
+* Middleware flow
+* Best practices
+
