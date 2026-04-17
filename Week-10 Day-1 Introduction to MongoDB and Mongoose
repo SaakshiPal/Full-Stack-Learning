@@ -1,0 +1,240 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 10 – DAY 1 🍃 Introduction to MongoDB & Mongoose
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 1
+
+✔ Understand **what MongoDB is**
+✔ Learn **NoSQL database concept**
+✔ Understand **documents & collections**
+✔ Learn **Mongoose basics**
+✔ Connect Node.js with MongoDB
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is MongoDB?
+
+**MongoDB** is a **NoSQL database** that stores data in **JSON-like format**.
+
+📌 Data is stored as **documents**
+📌 Flexible schema
+📌 Highly scalable
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 SQL vs MongoDB
+
+| SQL Database      | MongoDB         |
+| ----------------- | --------------- |
+| Tables            | Collections     |
+| Rows              | Documents       |
+| Fixed schema      | Flexible schema |
+| MySQL, PostgreSQL | MongoDB         |
+
+---
+
+🔷 MongoDB Structure
+
+```text
+Database
+   ↓
+Collection
+   ↓
+Document (JSON)
+```
+
+---
+
+🔷 Example Document
+
+```json
+{
+  "name": "Saakshi",
+  "age": 22,
+  "skills": ["JavaScript", "React"]
+}
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Why MongoDB?
+
+✔ Flexible data storage
+✔ Easy to scale
+✔ Fast performance
+✔ Perfect for full stack apps
+
+---
+
+🔷 What is Mongoose?
+
+**Mongoose** is a **Node.js library (ODM)** for MongoDB.
+
+👉 Helps to:
+
+✔ Define schema
+✔ Validate data
+✔ Interact with database easily
+
+---
+
+🔷 Install Mongoose
+
+```bash
+npm install mongoose
+```
+
+---
+
+🔷 Connect MongoDB with Node.js
+
+```javascript
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://127.0.0.1:27017/mydb")
+  .then(() => console.log("Connected to MongoDB"))
+  .catch(err => console.error(err));
+```
+
+---
+
+🔷 Create Schema
+
+```javascript
+const userSchema = new mongoose.Schema({
+  name: String,
+  age: Number
+});
+```
+
+---
+
+🔷 Create Model
+
+```javascript
+const User = mongoose.model("User", userSchema);
+```
+
+---
+
+🔷 Insert Data
+
+```javascript
+const user = new User({
+  name: "Saakshi",
+  age: 22
+});
+
+user.save();
+```
+
+---
+
+🔷 Fetch Data
+
+```javascript
+User.find().then(users => console.log(users));
+```
+
+---
+
+🔷 Update Data
+
+```javascript
+User.updateOne({ name: "Saakshi" }, { age: 23 });
+```
+
+---
+
+🔷 Delete Data
+
+```javascript
+User.deleteOne({ name: "Saakshi" });
+```
+
+---
+
+🔷 CRUD Operations
+
+| Operation | Method      |
+| --------- | ----------- |
+| Create    | save()      |
+| Read      | find()      |
+| Update    | updateOne() |
+| Delete    | deleteOne() |
+
+---
+
+🔷 Mongoose vs MongoDB
+
+| MongoDB       | Mongoose            |
+| ------------- | ------------------- |
+| Raw database  | ODM library         |
+| Flexible      | Structured schema   |
+| No validation | Built-in validation |
+
+---
+
+🔷 Example Project Structure
+
+```text
+Backend/
+│
+├── models/
+│   └── userModel.js
+├── config/
+│   └── db.js
+├── server.js
+└── package.json
+```
+
+---
+
+🔷 Real-World Flow
+
+```text
+React Frontend
+        ↓
+Express API
+        ↓
+MongoDB Database
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Mistakes
+
+❌ Not handling connection errors
+❌ Wrong schema definition
+❌ Not using async/await
+❌ Forgetting validation
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Use Mongoose for structure
+✔ Validate data
+✔ Use async/await
+✔ Separate models
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Use Cases
+
+✔ User authentication
+✔ E-commerce data
+✔ Social media apps
+✔ Blog systems
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-1 Summary (Week-10)
+
+* What MongoDB is
+* NoSQL basics
+* Documents & collections
+* Mongoose introduction
+* CRUD operations
