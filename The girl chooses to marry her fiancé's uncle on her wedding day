@@ -1,0 +1,296 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 9 – DAY 7 📂 Serving Static Files & Template Engines (Express.js)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 7
+
+✔ Understand **static files in Express**
+✔ Learn how to serve **HTML, CSS, JS**
+✔ Understand **template engines**
+✔ Render dynamic content
+✔ Build server-side rendered apps
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What are Static Files?
+
+**Static files** are files that do NOT change dynamically.
+
+Examples:
+
+✔ HTML files
+✔ CSS files
+✔ JavaScript files
+✔ Images
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Why Serve Static Files?
+
+✔ Display frontend content
+✔ Load styles & scripts
+✔ Serve images/assets
+
+---
+
+🔷 Serving Static Files in Express
+
+Express provides built-in middleware:
+
+```javascript id="8y3k2p"
+app.use(express.static("public"));
+```
+
+---
+
+🔷 Project Structure
+
+```text id="m7k2p4"
+project/
+│
+├── public/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+├── server.js
+└── package.json
+```
+
+---
+
+🔷 Example
+
+server.js
+
+```javascript id="p2k4m8"
+const express = require("express");
+const app = express();
+
+app.use(express.static("public"));
+
+app.listen(3000, () => {
+  console.log("Server running");
+});
+```
+
+Open:
+
+```text id="n8k3p1"
+http://localhost:3000
+```
+
+---
+
+🔷 Access Static Files
+
+```text id="b3k9p6"
+/style.css  
+/script.js  
+/image.png  
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 What are Template Engines?
+
+Template engines allow you to:
+
+👉 Generate **dynamic HTML on server**
+
+Instead of static:
+
+```html id="q5k2m3"
+<h1>Hello User</h1>
+```
+
+Dynamic:
+
+```html id="r7k4p9"
+<h1>Hello <%= name %></h1>
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Popular Template Engines
+
+| Engine     | Description      |
+| ---------- | ---------------- |
+| EJS        | Simple & popular |
+| Pug        | Clean syntax     |
+| Handlebars | Logic-based      |
+
+---
+
+🔷 Using EJS Template Engine
+
+---
+
+Install EJS
+
+```bash id="t9k2m5"
+npm install ejs
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Setup EJS
+
+```javascript id="u3k7p8"
+app.set("view engine", "ejs");
+```
+
+---
+
+🔷 Folder Structure
+
+```text id="v2k8p6"
+project/
+│
+├── views/
+│   └── index.ejs
+├── server.js
+└── package.json
+```
+
+---
+
+🔷 Example EJS File
+
+```html id="w6k3p9"
+<h1>Hello <%= name %></h1>
+```
+
+---
+
+🔷 Render Template
+
+```javascript id="x5k2p7"
+app.get("/", (req, res) => {
+  res.render("index", { name: "Saakshi" });
+});
+```
+
+Output:
+
+```text id="y7k4p1"
+Hello Saakshi
+```
+
+---
+
+🔷 Passing Data to Templates
+
+```javascript id="z3k9p8"
+app.get("/user", (req, res) => {
+  res.render("index", { name: "John" });
+});
+```
+
+---
+
+🔷 Loop in EJS
+
+```html id="a4k7p2"
+<ul>
+  <% users.forEach(user => { %>
+    <li><%= user %></li>
+  <% }) %>
+</ul>
+```
+
+---
+
+🔷 Conditional Rendering
+
+```html id="b6k3p8"
+<% if (isLoggedIn) { %>
+  <h1>Welcome!</h1>
+<% } else { %>
+  <h1>Please login</h1>
+<% } %>
+```
+
+---
+
+🔷 Static + Template Together
+
+```javascript id="c2k9p5"
+app.use(express.static("public"));
+app.set("view engine", "ejs");
+```
+
+✔ Static files → CSS, JS
+✔ Templates → Dynamic HTML
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Real-World Flow
+
+```text id="d8k3p6"
+User Request
+     ↓
+Express Server
+     ↓
+Template Engine (EJS)
+     ↓
+HTML Response
+     ↓
+Browser
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚠️ Common Mistakes
+
+❌ Wrong folder name (views/public)
+❌ Forgetting `app.set()`
+❌ Mixing static & dynamic wrongly
+❌ Not passing data
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Keep static files in `/public`
+✔ Keep templates in `/views`
+✔ Use template engines for dynamic UI
+✔ Separate frontend & backend logic
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Use Cases
+
+✔ Server-side rendering apps
+✔ Admin dashboards
+✔ Blog websites
+✔ E-commerce pages
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📢 Suggested LinkedIn Post
+
+🚀 Learning **Static Files & Template Engines in Express**
+
+Today I explored:
+
+✔ Serving static files
+✔ Using EJS templates
+✔ Dynamic rendering
+✔ Server-side HTML
+
+Now I can build **dynamic web apps with Node.js** 🔥
+
+#NodeJS #ExpressJS #EJS #Backend #WebDevelopment
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-7 Summary (Week-9)
+
+* Static files in Express
+* express.static()
+* Template engines
+* EJS basics
+* Dynamic rendering
