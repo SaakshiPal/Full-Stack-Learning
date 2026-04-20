@@ -1,0 +1,305 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔐 WEEK-10 | DAY-3: Autoencoders & Variational Autoencoders (VAE)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📌 What is an Autoencoder?
+
+An **Autoencoder** is a type of neural network used to:
+
+👉 Learn efficient data representation
+👉 Compress and reconstruct data
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal
+
+```text
+Input → Compress → Reconstruct Output
+```
+
+Model tries to make:
+
+👉 Output ≈ Input
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📊 Autoencoder Architecture
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔄 Structure
+
+```text id="ae1"
+Input → Encoder → Latent Space → Decoder → Output
+```
+
+---
+
+🧠 Components
+
+---
+
+1️⃣ Encoder
+
+* Compresses input data
+* Extracts important features
+
+---
+
+2️⃣ Latent Space (Bottleneck)
+
+* Compressed representation
+* Contains essential information
+
+---
+
+3️⃣ Decoder
+
+* Reconstructs original input
+* Expands compressed data
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔍 Example
+
+Input image → compressed → reconstructed image
+
+---
+
+📊 Types of Autoencoders
+
+---
+
+1️⃣ Basic Autoencoder
+
+* Simple encoder + decoder
+* Used for reconstruction
+
+---
+
+2️⃣ Denoising Autoencoder
+
+* Removes noise from data
+
+Example:
+
+```text
+Noisy Image → Clean Image
+```
+
+---
+
+3️⃣ Sparse Autoencoder
+
+* Uses fewer active neurons
+* Learns important features
+
+---
+
+4️⃣ Variational Autoencoder (VAE)
+
+* Probabilistic version
+* Generates new data
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔥 What is VAE?
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📌 Definition
+
+**Variational Autoencoder (VAE)** is a generative model that:
+
+👉 Learns data distribution
+👉 Generates new samples
+
+---
+
+🧠 Key Idea
+
+Instead of fixed latent vector:
+
+👉 Learns **mean (μ)** and **variance (σ)**
+
+---
+
+📊 Latent Representation
+
+```text id="vae1"
+z ~ N(μ, σ²)
+```
+
+---
+
+🔄 VAE Architecture
+
+```text id="vae2"
+Input → Encoder → (μ, σ) → Sampling → Decoder → Output
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📐 VAE Loss Function
+
+VAE uses **two losses**:
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1️⃣ Reconstruction Loss
+
+Measures difference:
+
+```text
+Input vs Output
+```
+
+---
+
+2️⃣ KL Divergence
+
+Measures difference between:
+
+👉 Learned distribution vs Normal distribution
+
+---
+
+## Total Loss
+
+[
+Loss = Reconstruction + KL Divergence
+]
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ TensorFlow Autoencoder Example
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+```python id="ae_tf"
+from tensorflow import keras
+from tensorflow.keras import layers
+
+model = keras.Sequential([
+    layers.Dense(128, activation='relu', input_shape=(784,)),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(128, activation='relu'),
+    layers.Dense(784, activation='sigmoid')
+])
+
+model.compile(
+    optimizer='adam',
+    loss='binary_crossentropy'
+)
+
+model.fit(X_train, X_train, epochs=10)
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔥 PyTorch Autoencoder Example
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+```python id="ae_pt"
+import torch
+import torch.nn as nn
+
+class Autoencoder(nn.Module):
+    def __init__(self):
+        super().__init__()
+        
+        self.encoder = nn.Sequential(
+            nn.Linear(784, 128),
+            nn.ReLU(),
+            nn.Linear(128, 64)
+        )
+        
+        self.decoder = nn.Sequential(
+            nn.Linear(64, 128),
+            nn.ReLU(),
+            nn.Linear(128, 784),
+            nn.Sigmoid()
+        )
+    
+    def forward(self, x):
+        x = self.encoder(x)
+        x = self.decoder(x)
+        return x
+```
+
+---
+
+📊 VAE vs Autoencoder
+
+| Feature      | Autoencoder    | VAE             |
+| ------------ | -------------- | --------------- |
+| Output       | Reconstruction | Generation      |
+| Latent space | Fixed          | Probabilistic   |
+| Use case     | Compression    | Data generation |
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🚀 Applications
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Autoencoders
+
+* Image compression
+* Noise removal
+* Feature extraction
+
+---
+
+VAE
+
+* Image generation
+* Data augmentation
+* Anomaly detection
+
+---
+
+⚠️ Challenges
+
+❌ Blurry output in VAE
+❌ Complex training
+❌ Sensitive to hyperparameters
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Best Practices
+
+✔ Normalize input data
+✔ Use proper latent size
+✔ Tune loss balance
+✔ Use dropout
+
+---
+
+📊 Workflow
+
+```text id="ae_flow"
+Input Data
+   ↓
+Encoder
+   ↓
+Latent Space
+   ↓
+Decoder
+   ↓
+Reconstructed Output
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📌 WEEK-10 DAY-3 Summary
+
+* Autoencoders compress and reconstruct data
+* Encoder → Latent Space → Decoder
+* VAE generates new data using probability
+* Used in compression, denoising, generation
+* Important concept in deep learning
+
