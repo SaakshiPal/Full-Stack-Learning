@@ -1,0 +1,276 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 10 – DAY 3 🔐 Authentication with JWT (JSON Web Token)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 3
+
+✔ Understand **authentication vs authorization**
+✔ Learn **what JWT is**
+✔ Generate & verify tokens
+✔ Protect routes using middleware
+✔ Build secure backend APIs
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is Authentication?
+
+Authentication means:
+
+👉 Verifying **who the user is**
+
+Example:
+
+✔ Login with email & password
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Authentication vs Authorization
+
+| Authentication | Authorization        |
+| -------------- | -------------------- |
+| Who are you?   | What can you access? |
+| Login          | Permissions          |
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 What is JWT?
+
+**JWT (JSON Web Token)** is a secure way to:
+
+👉 Send user information between client & server
+
+📌 Used for authentication
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Structure of JWT
+
+A JWT has 3 parts:
+
+```text id="h8k2p4"
+Header.Payload.Signature
+```
+
+---
+
+Example Token
+
+```text id="k2p8m4"
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 JWT Components
+
+1️⃣ Header
+
+```json id="p2k9m4"
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+```
+
+---
+
+2️⃣ Payload
+
+```json id="m4k8p2"
+{
+  "userId": 123,
+  "email": "user@example.com"
+}
+```
+
+---
+
+3️⃣ Signature
+
+✔ Ensures token is secure
+✔ Created using secret key
+
+---
+
+🔷 Install JWT Library
+
+```bash id="t3k9p2"
+npm install jsonwebtoken
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Generate Token
+
+```javascript id="u8k2p4"
+const jwt = require("jsonwebtoken");
+
+const token = jwt.sign(
+  { userId: 1 },
+  "secretKey",
+  { expiresIn: "1h" }
+);
+
+console.log(token);
+```
+
+---
+
+🔷 Verify Token
+
+```javascript id="v4k9p2"
+jwt.verify(token, "secretKey", (err, decoded) => {
+  if (err) {
+    console.log("Invalid token");
+  } else {
+    console.log(decoded);
+  }
+});
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Authentication Flow
+
+```text id="w2k8p4"
+User Login
+   ↓
+Server verifies credentials
+   ↓
+JWT generated
+   ↓
+Client stores token
+   ↓
+Client sends token in request
+   ↓
+Server verifies token
+   ↓
+Access granted
+```
+
+---
+
+🔷 Sending Token in Request
+
+```text id="x8k2p4"
+Authorization: Bearer <token>
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Protect Routes with Middleware ⭐
+
+```javascript id="y4k9p2"
+function authMiddleware(req, res, next) {
+
+  const token = req.headers.authorization?.split(" ")[1];
+
+  if (!token) {
+    return res.status(401).send("Access denied");
+  }
+
+  try {
+    const verified = jwt.verify(token, "secretKey");
+    req.user = verified;
+    next();
+  } catch (err) {
+    res.status(400).send("Invalid token");
+  }
+}
+```
+
+---
+
+🔷 Use Middleware in Routes
+
+```javascript id="z2k8p4"
+app.get("/protected", authMiddleware, (req, res) => {
+  res.send("Protected data");
+});
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Login Example
+
+```javascript id="a4k9p2"
+app.post("/login", (req, res) => {
+
+  const { email, password } = req.body;
+
+  if (email === "test@mail.com" && password === "1234") {
+
+    const token = jwt.sign({ email }, "secretKey");
+    res.json({ token });
+
+  } else {
+    res.status(401).send("Invalid credentials");
+  }
+});
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Best Practices for JWT
+
+✔ Use strong secret key
+✔ Set token expiry
+✔ Store token securely
+✔ Use HTTPS
+✔ Do not store sensitive data in payload
+
+---
+
+⚠️ Common Mistakes
+
+❌ Storing passwords in token
+❌ No expiration time
+❌ Weak secret key
+❌ Not verifying token
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 JWT vs Sessions
+
+| JWT              | Sessions         |
+| ---------------- | ---------------- |
+| Stateless        | Stateful         |
+| Stored on client | Stored on server |
+| Scalable         | Less scalable    |
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Use Cases
+
+✔ Login systems
+✔ Protected APIs
+✔ Role-based access
+✔ E-commerce authentication
+
+---
+
+🔷 Real Flow Example
+
+```text id="c4k8p2"
+React Frontend
+        ↓
+Login API (Express)
+        ↓
+JWT Token
+        ↓
+Protected Routes
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-3 Summary (Week-10)
+
+* What JWT is
+* Token structure
+* Generate & verify token
+* Middleware protection
+* Authentication flow
+
