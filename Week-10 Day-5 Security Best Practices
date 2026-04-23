@@ -1,0 +1,327 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 10 – DAY 5 🔐 Security Best Practices (Node.js + Express)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 5
+
+✔ Understand **common web security threats**
+✔ Learn how to **secure APIs**
+✔ Protect user data
+✔ Use security middleware
+✔ Follow best practices for production
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Why Security is Important?
+
+Without security:
+
+❌ Data leaks
+❌ Hacking risks
+❌ Unauthorized access
+
+With security:
+
+✔ Safe user data
+✔ Trusted applications
+✔ Strong backend systems
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Common Security Threats
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1️⃣ SQL Injection
+
+👉 Injecting malicious queries
+
+❌ Unsafe:
+
+```javascript
+const query = "SELECT * FROM users WHERE email = '" + email + "'";
+```
+
+✔ Safe:
+
+```javascript
+// Use parameterized queries / ORM (Mongoose)
+User.findOne({ email });
+```
+
+---
+
+2️⃣ Cross-Site Scripting (XSS)
+
+👉 Injecting malicious scripts into frontend
+
+✔ Solution:
+
+* Escape user input
+* Use proper templating
+
+---
+
+3️⃣ Cross-Site Request Forgery (CSRF)
+
+👉 Unauthorized actions from authenticated users
+
+✔ Solution:
+
+* Use CSRF tokens
+
+---
+
+4️⃣ Brute Force Attacks
+
+👉 Trying many passwords
+
+✔ Solution:
+
+* Rate limiting
+* Strong passwords
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Password Security (Very Important ⭐)
+
+Never store plain passwords ❌
+
+---
+
+Use bcrypt
+
+```bash
+npm install bcrypt
+```
+
+---
+
+Hash Password
+
+```javascript
+const bcrypt = require("bcrypt");
+
+const hashed = await bcrypt.hash("password123", 10);
+```
+
+---
+
+Compare Password
+
+```javascript
+const match = await bcrypt.compare("password123", hashed);
+```
+
+---
+
+🔷 Secure Authentication
+
+✔ Use JWT or sessions
+✔ Set token expiry
+✔ Use secure cookies
+
+---
+
+🔷 Environment Variables
+
+Store secrets in `.env`:
+
+```text
+PORT=3000
+JWT_SECRET=mysecretkey
+```
+
+Use:
+
+```javascript
+require("dotenv").config();
+```
+
+---
+
+🔷 Use Helmet (Security Middleware)
+
+```bash
+npm install helmet
+```
+
+```javascript
+const helmet = require("helmet");
+app.use(helmet());
+```
+
+✔ Secures HTTP headers
+
+---
+
+🔷 Enable CORS Safely
+
+```bash
+npm install cors
+```
+
+```javascript
+const cors = require("cors");
+
+app.use(cors({
+  origin: "http://localhost:3000"
+}));
+```
+
+✔ Restrict access
+
+---
+
+🔷 Rate Limiting
+
+```bash
+npm install express-rate-limit
+```
+
+```javascript
+const rateLimit = require("express-rate-limit");
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100
+});
+
+app.use(limiter);
+```
+
+✔ Prevent abuse
+
+---
+
+🔷 Input Validation
+
+```bash
+npm install express-validator
+```
+
+```javascript
+const { body } = require("express-validator");
+
+app.post("/user",
+  body("email").isEmail(),
+  (req, res) => {
+    res.send("Valid data");
+  }
+);
+```
+
+---
+
+🔷 Secure Cookies
+
+```javascript
+res.cookie("token", "abc123", {
+  httpOnly: true,
+  secure: true
+});
+```
+
+---
+
+🔷 HTTPS (Very Important ⭐)
+
+✔ Always use HTTPS
+
+```text
+http:// ❌  
+https:// ✔
+```
+
+---
+
+🔷 Hide Sensitive Data
+
+❌ Never send:
+
+* Passwords
+* Tokens
+* Secret keys
+
+✔ Send safe responses
+
+---
+
+🔷 Error Handling Security
+
+```javascript
+res.status(500).json({
+  message: "Internal Server Error"
+});
+```
+
+✔ Do not expose stack trace
+
+---
+
+🔷 Logging & Monitoring
+
+✔ Use logging tools
+✔ Monitor suspicious activity
+
+---
+
+🔷 Dependency Security
+
+```bash
+npm audit
+npm audit fix
+```
+
+✔ Fix vulnerabilities
+
+---
+
+🔷 Real-World Security Flow
+
+```text
+User → Login → Password hashed → Token issued
+      ↓
+Secure API → Middleware → Verified → Response
+```
+
+---
+
+⚠️ Common Mistakes
+
+❌ Storing plain passwords
+❌ Exposing API keys
+❌ No validation
+❌ Not using HTTPS
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Hash passwords
+✔ Use environment variables
+✔ Use middleware (helmet, cors)
+✔ Validate input
+✔ Limit requests
+✔ Keep dependencies updated
+
+---
+
+🧠 Real-World Use Cases
+
+✔ Banking apps
+✔ E-commerce websites
+✔ Authentication systems
+✔ Social media platforms
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-5 Summary (Week-10)
+
+* Common security threats
+* Password hashing
+* Middleware security
+* HTTPS & cookies
+* Best practices
