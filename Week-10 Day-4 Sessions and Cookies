@@ -1,0 +1,245 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 10 – DAY 4 🍪 Sessions & Cookies in Node.js (Express)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 4
+
+✔ Understand **what cookies are**
+✔ Learn **what sessions are**
+✔ Difference between cookies & sessions
+✔ Implement sessions in Express
+✔ Manage user authentication
+
+---
+
+🧠 What are Cookies?
+
+**Cookies** are small pieces of data stored in the **user’s browser**.
+
+👉 Used to:
+
+* Store user info
+* Track sessions
+* Save preferences
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 Cookie Flow
+
+```text id="k2m8p4"
+Server → Sends Cookie → Browser Stores → Sends back with request
+```
+
+---
+
+🔷 Example Cookie
+
+```javascript id="m4p8k2"
+res.cookie("username", "Saakshi");
+```
+
+---
+
+🔷 Read Cookie
+
+```javascript id="p2k9m4"
+req.cookies.username;
+```
+
+---
+
+🔷 Install Cookie Parser
+
+```bash id="t8k2p4"
+npm install cookie-parser
+```
+
+Use:
+
+```javascript id="u4k9p2"
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+```
+
+---
+
+🔷 What are Sessions?
+
+**Sessions** store user data on the **server**, not browser.
+
+👉 Browser stores only **session ID**
+
+---
+
+🔷 Session Flow
+
+```text id="v2k8p4"
+Client → Login → Server creates session → Sends session ID
+        ↓
+Client sends session ID with each request
+        ↓
+Server verifies session
+```
+
+---
+
+🔷 Install Session Middleware
+
+```bash id="w8k2p4"
+npm install express-session
+```
+
+---
+
+🔷 Setup Session
+
+```javascript id="x4k9p2"
+const session = require("express-session");
+
+app.use(session({
+  secret: "secretKey",
+  resave: false,
+  saveUninitialized: true
+}));
+```
+
+---
+
+🔷 Store Data in Session
+
+```javascript id="y2k8p4"
+app.get("/login", (req, res) => {
+  req.session.user = "Saakshi";
+  res.send("Logged in");
+});
+```
+
+---
+
+🔷 Access Session Data
+
+```javascript id="z4k9p2"
+app.get("/profile", (req, res) => {
+  res.send(req.session.user);
+});
+```
+
+---
+
+🔷 Destroy Session
+
+```javascript id="a2k8p4"
+req.session.destroy();
+```
+
+---
+
+🔷 Cookies vs Sessions
+
+| Feature    | Cookies     | Sessions        |
+| ---------- | ----------- | --------------- |
+| Storage    | Browser     | Server          |
+| Security   | Less secure | More secure     |
+| Size limit | Small       | Large           |
+| Speed      | Faster      | Slightly slower |
+
+---
+
+🔷 Cookie Options
+
+```javascript id="b4k9p2"
+res.cookie("user", "Saakshi", {
+  maxAge: 1000 * 60 * 60,
+  httpOnly: true
+});
+```
+
+✔ `httpOnly` → secure
+✔ `maxAge` → expiry
+
+---
+
+🔷 Secure Cookies
+
+```javascript id="c2k8p4"
+res.cookie("token", "abc123", {
+  secure: true
+});
+```
+
+✔ Works with HTTPS
+
+---
+
+🔷 Session Middleware Options
+
+```javascript id="d4k9p2"
+app.use(session({
+  secret: "secretKey",
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 60000 }
+}));
+```
+
+---
+
+🔷 Real-World Authentication Flow
+
+```text id="e2k8p4"
+User Login
+   ↓
+Server creates session
+   ↓
+Session ID stored in cookie
+   ↓
+User requests protected route
+   ↓
+Server verifies session
+```
+
+---
+
+🔷 Cookies + Sessions Together
+
+✔ Cookie stores session ID
+✔ Session stores user data
+
+---
+
+⚠️ Common Mistakes
+
+❌ Storing sensitive data in cookies
+❌ Not setting expiry
+❌ Not securing cookies
+❌ Not destroying sessions
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Use httpOnly cookies
+✔ Use secure cookies (HTTPS)
+✔ Use sessions for authentication
+✔ Clear sessions on logout
+
+---
+
+🧠 Real-World Use Cases
+
+✔ Login systems
+✔ Shopping carts
+✔ User sessions
+✔ Authentication
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-4 Summary (Week-10)
+
+* What cookies are
+* What sessions are
+* Differences
+* Session middleware
+* Authentication flow
