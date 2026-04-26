@@ -1,0 +1,237 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📘 WEEK 10 – DAY 7 📂 Handling File Uploads (Node.js + Express + Multer)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 Goal of Day 7
+
+✔ Understand **file uploads in backend**
+✔ Learn **multipart/form-data**
+✔ Use **Multer middleware**
+✔ Upload single & multiple files
+✔ Store files safely
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 What is File Upload?
+
+File upload means:
+
+👉 Sending files (images, videos, docs) from client → server
+
+Examples:
+
+✔ Profile picture upload
+✔ Resume upload
+✔ Product images
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🔷 How File Upload Works?
+
+```text id="flow1"
+Client (Form)
+   ↓
+multipart/form-data
+   ↓
+Server (Express + Multer)
+   ↓
+Store File (disk/cloud)
+```
+
+---
+
+🔷 What is Multer?
+
+**Multer** is a middleware for:
+
+👉 Handling `multipart/form-data` (file uploads)
+
+✔ Works with Express
+✔ Easy to use
+✔ Supports multiple files
+
+---
+
+🔷 Install Multer
+
+```bash id="cmd1"
+npm install multer
+```
+
+---
+
+🔷 Basic Setup
+
+```javascript id="code1"
+const express = require("express");
+const multer = require("multer");
+
+const app = express();
+
+const upload = multer({ dest: "uploads/" });
+```
+
+---
+
+🔷 Upload Single File
+
+```javascript id="code2"
+app.post("/upload", upload.single("file"), (req, res) => {
+  res.send("File uploaded successfully");
+});
+```
+
+---
+
+🔷 HTML Form Example
+
+```html id="html1"
+<form action="/upload" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file" />
+  <button type="submit">Upload</button>
+</form>
+```
+
+---
+
+🔷 Upload Multiple Files
+
+```javascript id="code3"
+app.post("/upload-multiple", upload.array("files", 5), (req, res) => {
+  res.send("Multiple files uploaded");
+});
+```
+
+---
+
+🔷 File Information
+
+```javascript id="code4"
+console.log(req.file);   // single file
+console.log(req.files);  // multiple files
+```
+
+---
+
+🔷 Custom Storage (Best Practice ⭐)
+
+```javascript id="code5"
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  }
+});
+
+const upload = multer({ storage });
+```
+
+---
+
+🔷 File Filter (Security)
+
+```javascript id="code6"
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === "image/png" || file.mimetype === "image/jpeg") {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({ storage, fileFilter });
+```
+
+---
+
+🔷 File Size Limit
+
+```javascript id="code7"
+const upload = multer({
+  storage,
+  limits: { fileSize: 1024 * 1024 * 2 } // 2MB
+});
+```
+
+---
+
+🔷 Serving Uploaded Files
+
+```javascript id="code8"
+app.use("/uploads", express.static("uploads"));
+```
+
+Access:
+
+```text id="url1"
+/uploads/file-name.jpg
+```
+
+---
+
+🔷 Upload to Cloud (Optional)
+
+Instead of local storage:
+
+✔ Cloudinary
+✔ AWS S3
+✔ Firebase Storage
+
+---
+
+🔷 Real-World Flow
+
+```text id="flow2"
+User selects file
+   ↓
+Form submits
+   ↓
+Multer processes file
+   ↓
+File saved (uploads/)
+   ↓
+Response sent
+```
+
+---
+
+⚠️ Common Mistakes
+
+❌ Not using multipart/form-data
+❌ No file validation
+❌ Large file uploads
+❌ Storing files insecurely
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+💡 Best Practices
+
+✔ Validate file type
+✔ Limit file size
+✔ Rename files
+✔ Store securely
+✔ Use cloud storage in production
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Real-World Use Cases
+
+✔ Profile image upload
+✔ Resume upload
+✔ E-commerce product images
+✔ Document management systems
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+✅ DAY-7 Summary (Week-10)
+
+* File upload basics
+* Multer setup
+* Single & multiple uploads
+* File validation
+* Best practices
+
